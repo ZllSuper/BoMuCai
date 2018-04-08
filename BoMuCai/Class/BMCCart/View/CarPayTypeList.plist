@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>支付宝</string>
+		<key>imageIcon</key>
+		<string>CarPayTypeIcon1</string>
+		<key>select</key>
+		<false/>
+		<key>code</key>
+		<string>01700001</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>银联</string>
+		<key>imageIcon</key>
+		<string>CarPayTypeIcon2</string>
+		<key>select</key>
+		<false/>
+		<key>code</key>
+		<string>01700003</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>微信</string>
+		<key>imageIcon</key>
+		<string>CarPayTypeIcon3</string>
+		<key>select</key>
+		<false/>
+		<key>code</key>
+		<string>01700002</string>
+	</dict>
+</array>
+</plist>

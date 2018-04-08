@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="WaresCommentCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UkT-H6-PJ1" customClass="CWStarRateView">
+                        <rect key="frame" x="16" y="10" width="120" height="20"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="0qn-yu-voc"/>
+                            <constraint firstAttribute="width" constant="120" id="g4e-QY-zao"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奔跑的蜗牛" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsR-Be-I3T">
+                        <rect key="frame" x="141" y="12" width="88" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.28437811136245728" green="0.28442415595054626" blue="0.28436803817749023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2012-12-03" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2q-15-xoP">
+                        <rect key="frame" x="234" y="14" width="70" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="Pez-8y-JeT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大厦困了就睡打开就爱好的空间哈会计师的会计啊哈" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYg-C4-bo5">
+                        <rect key="frame" x="16" y="40" width="288" height="31.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LsR-Be-I3T" firstAttribute="centerY" secondItem="UkT-H6-PJ1" secondAttribute="centerY" id="6Tj-Tj-Z5G"/>
+                    <constraint firstItem="hYg-C4-bo5" firstAttribute="leading" secondItem="UkT-H6-PJ1" secondAttribute="leading" id="8be-vh-sYQ"/>
+                    <constraint firstAttribute="trailing" secondItem="y2q-15-xoP" secondAttribute="trailing" constant="16" id="R41-Nb-KgI"/>
+                    <constraint firstItem="y2q-15-xoP" firstAttribute="bottom" secondItem="LsR-Be-I3T" secondAttribute="bottom" id="bog-Q3-wyY"/>
+                    <constraint firstItem="y2q-15-xoP" firstAttribute="leading" secondItem="LsR-Be-I3T" secondAttribute="trailing" constant="5" id="hAa-LE-olA"/>
+                    <constraint firstItem="UkT-H6-PJ1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="m9o-qC-PFW"/>
+                    <constraint firstAttribute="trailing" secondItem="hYg-C4-bo5" secondAttribute="trailing" constant="16" id="nco-Ah-TU6"/>
+                    <constraint firstItem="UkT-H6-PJ1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="oOk-NP-DIz"/>
+                    <constraint firstItem="hYg-C4-bo5" firstAttribute="top" secondItem="UkT-H6-PJ1" secondAttribute="bottom" constant="10" id="ssP-0w-FAi"/>
+                    <constraint firstItem="LsR-Be-I3T" firstAttribute="leading" secondItem="UkT-H6-PJ1" secondAttribute="trailing" constant="5" id="tQT-LL-GJV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="commentLabel" destination="hYg-C4-bo5" id="cbA-kX-x60"/>
+                <outlet property="nameLabel" destination="LsR-Be-I3T" id="rl1-IW-hKC"/>
+                <outlet property="rateView" destination="UkT-H6-PJ1" id="C70-O8-rlZ"/>
+                <outlet property="timeLabel" destination="y2q-15-xoP" id="hoM-lU-O6f"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

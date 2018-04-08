@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PersonCenterIconAndNameView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceHoldImage" translatesAutoresizingMaskIntoConstraints="NO" id="PVv-2N-uS0">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopHeaderShadeView" translatesAutoresizingMaskIntoConstraints="NO" id="Jzz-Wr-khH">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceHoldImage" translatesAutoresizingMaskIntoConstraints="NO" id="bgU-IE-VuH">
+                    <rect key="frame" x="148" y="65" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="LOG-lV-8Bc"/>
+                        <constraint firstAttribute="height" constant="80" id="udh-VZ-x49"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopDetailLevelBack" translatesAutoresizingMaskIntoConstraints="NO" id="N02-O1-NvJ">
+                    <rect key="frame" x="208" y="130" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="fuo-j9-hJt"/>
+                        <constraint firstAttribute="height" constant="20" id="zA0-GE-ZAb"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v44-am-sRb">
+                    <rect key="frame" x="220" y="135" width="6" height="10"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                    <color key="textColor" red="0.93530589340000003" green="0.43316361310000001" blue="0.24824273590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopListVIcon" translatesAutoresizingMaskIntoConstraints="NO" id="aFe-df-Ymj">
+                    <rect key="frame" x="210" y="135" width="10" height="10"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="e1Y-Xq-7p5"/>
+                        <constraint firstAttribute="width" constant="10" id="oj4-Np-eis"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奔跑的肉夹馍" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQg-v8-hg7">
+                    <rect key="frame" x="144" y="150" width="86" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yyH-9X-QnM">
+                    <rect key="frame" x="148" y="175" width="80" height="5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="1DF-0p-0dJ"/>
+                        <constraint firstAttribute="height" constant="5" id="IPB-9f-iSh"/>
+                    </constraints>
+                </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TW5-qr-waw">
+                    <rect key="frame" x="179.33333333333337" y="182" width="16.666666666666657" height="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Scu-b7-FDH">
+                    <rect key="frame" x="299" y="155" width="76" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <state key="normal" title="账户信息" backgroundImage="PCAccountInfoBack"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mQg-v8-hg7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0ty-X8-Nhe"/>
+                <constraint firstItem="v44-am-sRb" firstAttribute="leading" secondItem="aFe-df-Ymj" secondAttribute="trailing" id="1fD-Di-eGf"/>
+                <constraint firstItem="yyH-9X-QnM" firstAttribute="top" secondItem="mQg-v8-hg7" secondAttribute="bottom" constant="8" id="5Bg-z7-4bw"/>
+                <constraint firstItem="PVv-2N-uS0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Sd-3e-A1L"/>
+                <constraint firstItem="bgU-IE-VuH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8nr-UZ-88J"/>
+                <constraint firstItem="mQg-v8-hg7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8xY-dc-rnb"/>
+                <constraint firstItem="N02-O1-NvJ" firstAttribute="centerX" secondItem="aFe-df-Ymj" secondAttribute="centerX" constant="3" id="AFD-3G-kKo"/>
+                <constraint firstItem="Scu-b7-FDH" firstAttribute="top" secondItem="mQg-v8-hg7" secondAttribute="top" constant="5" id="Du5-n8-lzK"/>
+                <constraint firstItem="bgU-IE-VuH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20" id="HaH-uj-lll"/>
+                <constraint firstItem="Jzz-Wr-khH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="J5k-p2-ywe"/>
+                <constraint firstItem="bgU-IE-VuH" firstAttribute="trailing" secondItem="N02-O1-NvJ" secondAttribute="trailing" id="KXg-QG-b1o"/>
+                <constraint firstAttribute="bottom" secondItem="Jzz-Wr-khH" secondAttribute="bottom" id="MYB-L4-Vp6"/>
+                <constraint firstItem="aFe-df-Ymj" firstAttribute="bottom" secondItem="v44-am-sRb" secondAttribute="bottom" id="PoO-7r-auA"/>
+                <constraint firstItem="bgU-IE-VuH" firstAttribute="bottom" secondItem="N02-O1-NvJ" secondAttribute="bottom" constant="-5" id="R7z-wW-zNE"/>
+                <constraint firstItem="aFe-df-Ymj" firstAttribute="centerY" secondItem="N02-O1-NvJ" secondAttribute="centerY" id="V5L-5u-eWW"/>
+                <constraint firstItem="Jzz-Wr-khH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WgC-Py-2y9"/>
+                <constraint firstItem="PVv-2N-uS0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="b4w-O4-hru"/>
+                <constraint firstItem="mQg-v8-hg7" firstAttribute="top" secondItem="bgU-IE-VuH" secondAttribute="bottom" constant="5" id="b9h-N2-xsU"/>
+                <constraint firstAttribute="trailing" secondItem="Scu-b7-FDH" secondAttribute="trailing" id="cmz-IN-daM"/>
+                <constraint firstAttribute="bottom" secondItem="PVv-2N-uS0" secondAttribute="bottom" id="diA-Vk-Adc"/>
+                <constraint firstAttribute="trailing" secondItem="Jzz-Wr-khH" secondAttribute="trailing" id="g1P-lz-Kq6"/>
+                <constraint firstAttribute="trailing" secondItem="PVv-2N-uS0" secondAttribute="trailing" id="hKr-2Y-if8"/>
+                <constraint firstItem="TW5-qr-waw" firstAttribute="top" secondItem="yyH-9X-QnM" secondAttribute="bottom" constant="2" id="maZ-al-KLJ"/>
+                <constraint firstItem="yyH-9X-QnM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oT4-FN-flO"/>
+                <constraint firstItem="TW5-qr-waw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xX5-1g-UDu"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="accountInfoBtn" destination="Scu-b7-FDH" id="Eyi-b3-0v5"/>
+                <outlet property="backImageView" destination="PVv-2N-uS0" id="JHG-8e-Ud9"/>
+                <outlet property="headerImageView" destination="bgU-IE-VuH" id="d04-ws-T6U"/>
+                <outlet property="levelLabel" destination="v44-am-sRb" id="LXL-lg-FGC"/>
+                <outlet property="nameLabel" destination="mQg-v8-hg7" id="9qi-w3-fhE"/>
+                <outlet property="progressLabel" destination="TW5-qr-waw" id="oyh-dw-HxC"/>
+                <outlet property="progressView" destination="yyH-9X-QnM" id="UCa-z8-dtg"/>
+            </connections>
+            <point key="canvasLocation" x="-245.5" y="-234"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="PCAccountInfoBack" width="76" height="28"/>
+        <image name="PlaceHoldImage" width="250" height="102"/>
+        <image name="ShopDetailLevelBack" width="17" height="17"/>
+        <image name="ShopHeaderShadeView" width="360" height="191"/>
+        <image name="ShopListVIcon" width="11" height="12"/>
+    </resources>
+</document>

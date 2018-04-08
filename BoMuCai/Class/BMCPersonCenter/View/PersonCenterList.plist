@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>imageIcon</key>
+		<string>PCListIcon1</string>
+		<key>title</key>
+		<string>消息中心</string>
+	</dict>
+	<dict>
+		<key>imageIcon</key>
+		<string>PCListIcon2</string>
+		<key>title</key>
+		<string>我的收藏</string>
+	</dict>
+	<dict>
+		<key>imageIcon</key>
+		<string>PCListIcon3</string>
+		<key>title</key>
+		<string>会员服务</string>
+	</dict>
+	<dict>
+		<key>imageIcon</key>
+		<string>PCListIcon4</string>
+		<key>title</key>
+		<string>关于我们</string>
+	</dict>
+	<dict>
+		<key>imageIcon</key>
+		<string>PCListIcon5</string>
+		<key>title</key>
+		<string>意见反馈</string>
+	</dict>
+	<dict>
+		<key>imageIcon</key>
+		<string>PCListIcon6</string>
+		<key>title</key>
+		<string>浏览记录</string>
+	</dict>
+	<dict>
+		<key>imageIcon</key>
+		<string>PCListIcon7</string>
+		<key>title</key>
+		<string>我的优惠券</string>
+	</dict>
+	<dict>
+		<key>imageIcon</key>
+		<string>PCListIcon8</string>
+		<key>title</key>
+		<string>分享应用</string>
+	</dict>
+</array>
+</plist>
