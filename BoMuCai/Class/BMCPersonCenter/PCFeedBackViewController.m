@@ -112,6 +112,8 @@
         make.width.mas_equalTo(150);
         make.bottom.mas_equalTo(self.contentScrollView).offset(-20);
     }];
+    
+    [self.phoneBtn addTarget:self action:@selector(phoneButtonAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - request
@@ -218,7 +220,7 @@
 {
     if (!_phoneBtn)
     {
-        NSString *tipStr = @"400-2251-1123";
+        NSString *tipStr = @"180-3188-3945";
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:tipStr];
         NSRange strRange = {0,[str length]};
         [str addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:strRange];
@@ -237,6 +239,11 @@
         _contentScrollView = [[UIScrollView alloc] init];
     }
     return _contentScrollView;
+}
+
+- (void)phoneButtonAction
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://18031883945"]];
 }
 
 /*
