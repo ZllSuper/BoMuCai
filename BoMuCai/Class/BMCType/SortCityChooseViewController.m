@@ -38,7 +38,7 @@
     
     [self initRightNavigationItemWithTitle:@"确定" target:self action:@selector(rightAction)];
     
-    self.proModel.cityList = [[BXHAreaDBManager defaultManeger] getCityListWithProId:self.proModel.provId];
+    self.proModel.cityList = (NSMutableArray *)[[BXHAreaDBManager defaultManeger] getCityListWithProId:self.proModel.provId];
     
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -56,6 +56,9 @@
     {
         [self.delegate chooseVc:self chooseCityModel:self.selectMode];
         [self.navigationController.containerController dismissAnimate];
+    }
+    else {
+        ToastShowCenter(@"请选择城市");
     }
 }
 

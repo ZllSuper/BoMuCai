@@ -155,6 +155,9 @@
         self.chooseCallBack(self.weakModel);
         [self.navigationController.containerController dismissAnimate];
     }
+    else {
+        ToastShowCenter(@"请选择分类");
+    }
 }
 
 #pragma mark =- tableViewDelegate / dataSource
