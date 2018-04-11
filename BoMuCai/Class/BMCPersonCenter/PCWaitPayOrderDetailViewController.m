@@ -23,6 +23,7 @@
 #import "PCOrderDetailRequest.h"
 #import "PCCancelDelOrderRequest.h"
 #import "PCOrderDetailModel.h"
+#import "BMCWaresDetailViewController.h"
 
 @interface PCWaitPayOrderDetailViewController () <UITableViewDelegate, UITableViewDataSource,CarSectionHeaderViewDelegate,PCOrderDetailBtnBottomViewDelegate>
 
@@ -332,6 +333,16 @@
         return self.timeNumCell;
     }
 }
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.section == 2)
+//    {
+//        PCGoodsModel *goodsModel = self.detailModel.orderMdseDtoList[indexPath.row];
+//        BMCWaresDetailViewController *vc = [[BMCWaresDetailViewController alloc] initWithWaresDetailId:goodsModel.goodsId];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//}
 
 #pragma mark - get
 - (UITableView *)tableView

@@ -20,8 +20,10 @@
 
 @end
 
-@interface PCAddressManagerTableView : BaseTableView <PCAddressManagerCellDelegate>
+@interface PCAddressManagerTableView : BaseTableView <PCAddressManagerCellDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, weak) id <PCAddressManagerTableViewProtocol>protocol;
+
+@property (nonatomic, weak) PCAddressModel *willDelectModel;
 
 @end

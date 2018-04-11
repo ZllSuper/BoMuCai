@@ -274,6 +274,7 @@
             cell.propertyName = @"phone";
             cell.titleLabel.text = @"联系电话";
             cell.inputTextFiled.text = self.addressModel.phone;
+            cell.inputTextFiled.keyboardType = UIKeyboardTypePhonePad;
         }
         else
         {

@@ -123,7 +123,14 @@
 
 - (void)addressManagerCellDelBtnAction:(PCAddressManagerCell *)cell
 {
-    [self addressDelRequest:cell.weakModel];
+    self.willDelectModel = cell.weakModel;
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"确定要删除改地址吗"
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                              otherButtonTitles:@"确定", nil];
+    alertView.tag = 100;
+    [alertView show];
 }
 
 - (void)addressManagerCellDefaultBtnAction:(PCAddressManagerCell *)cell
@@ -165,12 +172,15 @@
     return cell;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 100) {
+        if (buttonIndex == 1) {
+            [self addressDelRequest:self.willDelectModel];
+        }
+    }
 }
-*/
 
 @end
