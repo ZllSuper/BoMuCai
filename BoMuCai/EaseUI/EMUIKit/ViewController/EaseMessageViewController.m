@@ -100,60 +100,63 @@ typedef enum : NSUInteger {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:248 / 255.0 green:248 / 255.0 blue:248 / 255.0 alpha:1.0];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideImagePicker) name:@"hideImagePicker" object:nil];
-    
-    //Initialization
-    CGFloat chatbarHeight = [EaseChatToolbar defaultHeight];
-    EMChatToolbarType barType = self.conversation.type == EMConversationTypeChat ? EMChatToolbarTypeChat : EMChatToolbarTypeGroup;
-    self.chatToolbar = [[EaseChatToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - chatbarHeight - iPhoneX_BOTTOM_HEIGHT, self.view.frame.size.width, chatbarHeight) type:barType];
-    self.chatToolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    
-    //Initializa the gesture recognizer
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyBoardHidden:)];
-    [self.view addGestureRecognizer:tap];
-    
-    _lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    _lpgr.minimumPressDuration = 0.5;
-    [self.tableView addGestureRecognizer:_lpgr];
-    
-    _messageQueue = dispatch_queue_create("hyphenate.com", NULL);
-    
-    //Register the delegate
-    [EMCDDeviceManager sharedInstance].delegate = self;
-    [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
-    [[EMClient sharedClient].roomManager addDelegate:self delegateQueue:nil];
-    
-    if (self.conversation.type == EMConversationTypeChatRoom)
-    {
-        [self joinChatroom:self.conversation.conversationId];
-    }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didBecomeActive)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
-    
-    [[EaseBaseMessageCell appearance] setSendBubbleBackgroundImage:[[UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_bg"] stretchableImageWithLeftCapWidth:5 topCapHeight:35]];
-    [[EaseBaseMessageCell appearance] setRecvBubbleBackgroundImage:[[UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_bg"] stretchableImageWithLeftCapWidth:35 topCapHeight:35]];
-    
-    [[EaseBaseMessageCell appearance] setSendMessageVoiceAnimationImages:@[[UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_audio_playing_full"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_audio_playing_000"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_audio_playing_001"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_audio_playing_002"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_audio_playing_003"]]];
-    [[EaseBaseMessageCell appearance] setRecvMessageVoiceAnimationImages:@[[UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_audio_playing_full"],[UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_audio_playing000"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_audio_playing001"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_audio_playing002"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_audio_playing003"]]];
-    
-    [[EaseBaseMessageCell appearance] setAvatarSize:40.f];
-    [[EaseBaseMessageCell appearance] setAvatarCornerRadius:20.f];
-    
-    [[EaseChatBarMoreView appearance] setMoreViewBackgroundColor:[UIColor colorWithRed:240 / 255.0 green:242 / 255.0 blue:247 / 255.0 alpha:1.0]];
-    
-    [self tableViewDidTriggerHeaderRefresh];
-    [self setupEmotion];
-    
-    self.tableView.estimatedRowHeight = 0;
-    self.tableView.estimatedSectionHeaderHeight = 0;
-    self.tableView.estimatedSectionFooterHeight = 0;
+//    [[EMClient sharedClient] loginWithUsername:KAccountInfo.easemob password:KAccountInfo.easemobPassword completion:^(NSString *aUsername, EMError *aError) {
+        // Do any additional setup after loading the view.
+        self.view.backgroundColor = [UIColor colorWithRed:248 / 255.0 green:248 / 255.0 blue:248 / 255.0 alpha:1.0];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideImagePicker) name:@"hideImagePicker" object:nil];
+        
+        //Initialization
+        CGFloat chatbarHeight = [EaseChatToolbar defaultHeight];
+        EMChatToolbarType barType = self.conversation.type == EMConversationTypeChat ? EMChatToolbarTypeChat : EMChatToolbarTypeGroup;
+        self.chatToolbar = [[EaseChatToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - chatbarHeight - iPhoneX_BOTTOM_HEIGHT, self.view.frame.size.width, chatbarHeight) type:barType];
+        self.chatToolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        
+        //Initializa the gesture recognizer
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyBoardHidden:)];
+        [self.view addGestureRecognizer:tap];
+        
+        _lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        _lpgr.minimumPressDuration = 0.5;
+        [self.tableView addGestureRecognizer:_lpgr];
+        
+        _messageQueue = dispatch_queue_create("hyphenate.com", NULL);
+        
+        //Register the delegate
+        [EMCDDeviceManager sharedInstance].delegate = self;
+        [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+        [[EMClient sharedClient].roomManager addDelegate:self delegateQueue:nil];
+        
+        if (self.conversation.type == EMConversationTypeChatRoom)
+        {
+            [self joinChatroom:self.conversation.conversationId];
+        }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didBecomeActive)
+                                                     name:UIApplicationDidBecomeActiveNotification
+                                                   object:nil];
+        
+        [[EaseBaseMessageCell appearance] setSendBubbleBackgroundImage:[[UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_bg"] stretchableImageWithLeftCapWidth:5 topCapHeight:35]];
+        [[EaseBaseMessageCell appearance] setRecvBubbleBackgroundImage:[[UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_bg"] stretchableImageWithLeftCapWidth:35 topCapHeight:35]];
+        
+        [[EaseBaseMessageCell appearance] setSendMessageVoiceAnimationImages:@[[UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_audio_playing_full"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_audio_playing_000"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_audio_playing_001"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_audio_playing_002"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_audio_playing_003"]]];
+        [[EaseBaseMessageCell appearance] setRecvMessageVoiceAnimationImages:@[[UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_audio_playing_full"],[UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_audio_playing000"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_audio_playing001"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_audio_playing002"], [UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_audio_playing003"]]];
+        
+        [[EaseBaseMessageCell appearance] setAvatarSize:40.f];
+        [[EaseBaseMessageCell appearance] setAvatarCornerRadius:20.f];
+        
+        [[EaseChatBarMoreView appearance] setMoreViewBackgroundColor:[UIColor colorWithRed:240 / 255.0 green:242 / 255.0 blue:247 / 255.0 alpha:1.0]];
+        
+        [self tableViewDidTriggerHeaderRefresh];
+        [self setupEmotion];
+        
+        self.tableView.estimatedRowHeight = 0;
+        self.tableView.estimatedSectionHeaderHeight = 0;
+        self.tableView.estimatedSectionFooterHeight = 0;
+//    }];
 }
 
 /*!
@@ -1902,7 +1905,7 @@ typedef enum : NSUInteger {
 }
 
 - (void)_sendMessage:(EMMessage *)message
-    isNeedUploadFile:(BOOL)isUploadFile
+    isNeedUploadFile:(BOOL)isUploadFile addToDataSource:(BOOL)addToDataSource
 {
     if (self.conversation.type == EMConversationTypeGroupChat){
         message.chatType = EMChatTypeGroupChat;
@@ -1916,8 +1919,10 @@ typedef enum : NSUInteger {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"message.autoTransfer", @"Please customize the transfer attachment method") delegate:nil cancelButtonTitle:NSLocalizedString(@"sure", @"OK") otherButtonTitles:nil, nil];
         [alertView show];
     } else {
-        [self addMessageToDataSource:message
-                            progress:nil];
+        if (addToDataSource) {
+            [self addMessageToDataSource:message
+                                progress:nil];
+        }
         
         [[EMClient sharedClient].chatManager sendMessage:message progress:^(int progress) {
             if (weakself.dataSource && [weakself.dataSource respondsToSelector:@selector(messageViewController:updateProgress:messageModel:messageBody:)]) {
@@ -1928,7 +1933,14 @@ typedef enum : NSUInteger {
                 [weakself _refreshAfterSentMessage:aMessage];
             }
             else {
-                [weakself.tableView reloadData];
+                if (aError.code == EMErrorUserNotLogin) {
+                    [[EMClient sharedClient] loginWithUsername:KAccountInfo.easemob password:KAccountInfo.easemobPassword completion:^(NSString *aUsername, EMError *aError) {
+                        [weakself _sendMessage:message isNeedUploadFile:isUploadFile addToDataSource:NO];
+                    }];
+                }
+                else {
+                    [weakself.tableView reloadData];
+                }
             }
         }];
     }
@@ -1961,7 +1973,7 @@ typedef enum : NSUInteger {
 - (void)sendTextMessage:(NSString *)text withExt:(NSDictionary*)ext
 {
     EMMessage *message = [EaseSDKHelper getTextMessage:text to:self.conversation.conversationId messageType:[self _messageTypeFromConversationType] messageExt:ext];
-    [self _sendMessage:message isNeedUploadFile:NO];
+    [self _sendMessage:message isNeedUploadFile:NO addToDataSource:YES];
 }
 
 - (void)sendLocationMessageLatitude:(double)latitude
@@ -1969,7 +1981,7 @@ typedef enum : NSUInteger {
                          andAddress:(NSString *)address
 {
     EMMessage *message = [EaseSDKHelper getLocationMessageWithLatitude:latitude longitude:longitude address:address to:self.conversation.conversationId messageType:[self _messageTypeFromConversationType] messageExt:nil];
-    [self _sendMessage:message isNeedUploadFile:NO];
+    [self _sendMessage:message isNeedUploadFile:NO addToDataSource:YES];
 }
 
 - (void)sendImageMessageWithData:(NSData *)imageData
@@ -1983,7 +1995,7 @@ typedef enum : NSUInteger {
     }
     
     EMMessage *message = [EaseSDKHelper getImageMessageWithImageData:imageData to:self.conversation.conversationId messageType:[self _messageTypeFromConversationType] messageExt:nil];
-    [self _sendMessage:message isNeedUploadFile:YES];
+    [self _sendMessage:message isNeedUploadFile:YES addToDataSource:YES];
 }
 
 - (void)sendImageMessage:(UIImage *)image
@@ -1997,7 +2009,7 @@ typedef enum : NSUInteger {
     }
     
     EMMessage *message = [EaseSDKHelper getImageMessageWithImage:image to:self.conversation.conversationId messageType:[self _messageTypeFromConversationType] messageExt:nil];
-    [self _sendMessage:message isNeedUploadFile:YES];
+    [self _sendMessage:message isNeedUploadFile:YES addToDataSource:YES];
 }
 
 - (void)sendVoiceMessageWithLocalPath:(NSString *)localPath
@@ -2012,7 +2024,7 @@ typedef enum : NSUInteger {
     }
     
     EMMessage *message = [EaseSDKHelper getVoiceMessageWithLocalPath:localPath duration:duration to:self.conversation.conversationId messageType:[self _messageTypeFromConversationType] messageExt:nil];
-    [self _sendMessage:message isNeedUploadFile:YES];
+    [self _sendMessage:message isNeedUploadFile:YES addToDataSource:YES];
 }
 
 - (void)sendVideoMessageWithURL:(NSURL *)url
@@ -2026,11 +2038,11 @@ typedef enum : NSUInteger {
     }
     
     EMMessage *message = [EaseSDKHelper getVideoMessageWithURL:url to:self.conversation.conversationId messageType:[self _messageTypeFromConversationType] messageExt:nil];
-    [self _sendMessage:message isNeedUploadFile:YES];
+    [self _sendMessage:message isNeedUploadFile:YES addToDataSource:YES];
 }
 
 - (void)sendFileMessageWith:(EMMessage *)message {
-    [self _sendMessage:message isNeedUploadFile:YES];
+    [self _sendMessage:message isNeedUploadFile:YES addToDataSource:YES];
 }
 
 #pragma mark - notifycation
