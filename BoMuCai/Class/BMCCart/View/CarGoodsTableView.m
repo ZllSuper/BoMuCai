@@ -146,11 +146,13 @@
     if (count >= 1)
     {
         cell.buyCountView.countTextFiled.text = [NSString stringWithFormat:@"%ld",count];
+        //    cell.buyCountView.reduceBtn.enabled = count > 1;
+//        cell.buyCountView.addBtn.enabled = YES;
+        [self goodsNumChangeRequest:cell.weakModel andAmount:cell.buyCountView.countTextFiled.text];
     }
-    cell.buyCountView.reduceBtn.enabled = count > 1;
-    cell.buyCountView.addBtn.enabled = YES;
-    [self goodsNumChangeRequest:cell.weakModel andAmount:cell.buyCountView.countTextFiled.text];
-
+    else {
+        ToastShowCenter(@"数量超出范围~");
+    }
 }
 
 - (void)goodsCellCountAdd:(CarGoodsCell *)cell
@@ -160,10 +162,13 @@
     if (count <= [cell.weakModel.stock integerValue])
     {
         cell.buyCountView.countTextFiled.text = [NSString stringWithFormat:@"%ld",count];
+        //    cell.buyCountView.addBtn.enabled = count < [cell.weakModel.stock integerValue];
+        //    cell.buyCountView.reduceBtn.enabled = YES;
+        [self goodsNumChangeRequest:cell.weakModel andAmount:cell.buyCountView.countTextFiled.text];
     }
-    cell.buyCountView.addBtn.enabled = count < [cell.weakModel.stock integerValue];
-    cell.buyCountView.reduceBtn.enabled = YES;
-    [self goodsNumChangeRequest:cell.weakModel andAmount:cell.buyCountView.countTextFiled.text];
+    else {
+        ToastShowCenter(@"数量超出范围~");
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

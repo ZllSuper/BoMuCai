@@ -57,17 +57,17 @@
     self.titleLabel.text = weakModel.mdseName;
     [self.goodsIconImageView sd_setImageWithURL:[NSURL encodeURLWithString:weakModel.image] placeholderImage:ImagePlaceHolder];
     self.moneyLabel.text = _StrFormate(@"￥%@",MoneyDeal(weakModel.unitPrice));
-    self.buyCountView.reduceBtn.enabled = YES;
-    self.buyCountView.addBtn.enabled = YES;
+//    self.buyCountView.reduceBtn.enabled = YES;
+//    self.buyCountView.addBtn.enabled = YES;
     if([weakModel.amount integerValue] >= [weakModel.stock integerValue])
     {
         weakModel.amount = weakModel.stock;
-        self.buyCountView.addBtn.enabled = NO;
+//        self.buyCountView.addBtn.enabled = NO;
     }
     
     if ([weakModel.stock integerValue] <= 1 || [weakModel.amount integerValue] <= 1)
     {
-        self.buyCountView.reduceBtn.enabled = NO;
+//        self.buyCountView.reduceBtn.enabled = NO;
     }
     
     self.statueLabel.hidden = [weakModel.stock integerValue] > 0;

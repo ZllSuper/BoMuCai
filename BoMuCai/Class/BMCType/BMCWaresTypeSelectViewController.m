@@ -137,23 +137,23 @@
     if ([buyCount integerValue] <= 1)
     {
         cell.buyView.countTextFiled.text = @"1";
-        cell.buyView.reduceBtn.enabled = NO;
+//        cell.buyView.reduceBtn.enabled = NO;
         self.detailModel.buyCount = @"1";
-        cell.buyView.addBtn.enabled = YES;
+//        cell.buyView.addBtn.enabled = YES;
 
     }
     else
     {
-        cell.buyView.reduceBtn.enabled = YES;
+//        cell.buyView.reduceBtn.enabled = YES;
         if ([buyCount integerValue] > [self.detailModel.repertory integerValue])
         {
             cell.buyView.countTextFiled.text = self.detailModel.repertory;
-            cell.buyView.addBtn.enabled = NO;
+//            cell.buyView.addBtn.enabled = NO;
             self.detailModel.buyCount = self.detailModel.repertory;
         }
         else
         {
-            cell.buyView.addBtn.enabled = YES;
+//            cell.buyView.addBtn.enabled = YES;
             self.detailModel.buyCount = buyCount;
         }
     }
@@ -179,8 +179,8 @@
         WaresTypeBuyCountCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[WaresTypeBuyCountCell className] forIndexPath:indexPath];
         cell.buyView.maxCount = [self.detailModel.repertory integerValue];
         cell.buyView.countTextFiled.text = self.detailModel.buyCount;
-        cell.buyView.reduceBtn.enabled = [self.detailModel.buyCount integerValue] > 1;
-        cell.buyView.addBtn.enabled = [self.detailModel.buyCount integerValue] < [self.detailModel.repertory integerValue];
+//        cell.buyView.reduceBtn.enabled = [self.detailModel.buyCount integerValue] > 1;
+//        cell.buyView.addBtn.enabled = [self.detailModel.buyCount integerValue] < [self.detailModel.repertory integerValue];
         cell.delegate = self;
         return cell;
     }

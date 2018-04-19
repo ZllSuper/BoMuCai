@@ -49,12 +49,14 @@
     if (count <= self.maxCount)
     {
         self.countTextFiled.text = [NSString stringWithFormat:@"%ld",count];
+        //    self.addBtn.enabled = count < self.maxCount;
+        //    self.reduceBtn.enabled = YES;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:UITextFieldTextDidChangeNotification object:nil];
     }
-    self.addBtn.enabled = count < self.maxCount;
-    self.reduceBtn.enabled = YES;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:UITextFieldTextDidChangeNotification object:nil];
-
+    else {
+        ToastShowCenter(@"数量超出范围~");
+    }
 }
 
 - (void)reduceBtnAction
@@ -64,10 +66,13 @@
     if (count >= 1)
     {
         self.countTextFiled.text = [NSString stringWithFormat:@"%ld",count];
+        //    self.reduceBtn.enabled = count > 1;
+        self.addBtn.enabled = YES;;
+        [[NSNotificationCenter defaultCenter] postNotificationName:UITextFieldTextDidChangeNotification object:nil];
     }
-    self.reduceBtn.enabled = count > 1;
-    self.addBtn.enabled = YES;;
-    [[NSNotificationCenter defaultCenter] postNotificationName:UITextFieldTextDidChangeNotification object:nil];
+    else {
+        ToastShowCenter(@"数量超出范围~");
+    }
 }
 
 #pragma mark - get
@@ -82,7 +87,7 @@
         [_reduceBtn setTitleColor:Color_Text_LightGray forState:UIControlStateDisabled];
         _reduceBtn.titleLabel.font = [UIFont systemFontOfSize:20];
         [_reduceBtn setTitle:@"-" forState:0];
-        _reduceBtn.enabled = NO;
+//        _reduceBtn.enabled = NO;
         [_reduceBtn addTarget:self action:@selector(reduceBtnAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _reduceBtn;

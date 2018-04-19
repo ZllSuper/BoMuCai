@@ -67,7 +67,7 @@
                 [weakSelf huanxinLogin];
             }
             BXHStrongObj(weakSelf);
-            [weakSelfStrong performSelector:@selector(cancelViewController) withObject:nil afterDelay:1.0];
+            [weakSelfStrong performSelector:@selector(cancelViewController) withObject:nil afterDelay:3.0];
         }
     }];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
