@@ -115,14 +115,16 @@
             url = sourceDict[@"imageA"];
         }
         else {
-            url = sourceDict[@"imageB"];
+            url = sourceDict.allValues[0];
         }
         
         if (url)
         {
-            id<EMSDWebImageOperation> operation = [EMSDWebImageManager.sharedManager downloadImageWithURL:[NSURL encodeURLWithString:url] options:0 progress:nil completed:^(UIImage *image, NSError *error, EMSDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                [[NSUserDefaults standardUserDefaults] setURL:imageURL forKey:ImageStartLoadUrl];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+            [EMSDWebImageManager.sharedManager downloadImageWithURL:[NSURL encodeURLWithString:url] options:0 progress:nil completed:^(UIImage *image, NSError *error, EMSDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                if (error == nil) {
+                    [[NSUserDefaults standardUserDefaults] setURL:imageURL forKey:ImageStartLoadUrl];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                }
             }];
         }
     } failure:^(NSError *error, BXHBaseRequest *request) {
@@ -135,7 +137,7 @@
     __weak typeof(self) weakSelf = self;
     TurnRoundRequest *turnRoundRequest = [[TurnRoundRequest alloc] init];
     HomeActivityRequest *activityRequest = [[HomeActivityRequest alloc] init];
-    activityRequest.curPage = [NSString stringWithFormat:@"%ld",self.tableView.page];
+    activityRequest.curPage = [NSString stringWithFormat:@"%d",self.tableView.page];
     activityRequest.pageSize = @"10";
     activityRequest.type = @"1";
     
