@@ -24,7 +24,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import <TencentOpenAPI/TencentOAuth.h>
-
+#import <UMCommon/UMCommon.h>
 
 @interface AppDelegate () <BXHLaunchViewControllerDelegate>
 
@@ -36,6 +36,8 @@
 {
     EMOptions *options = [EMOptions optionsWithAppkey:@"1143170301115115#baicai"];
     options.apnsCertName = @"BaiCaiDevelopPush";
+    
+    [UMConfigure initWithAppkey:@"5adf1901b27b0a59b9000195" channel:@"iOS"];
 
     EMError *error = [[EMClient sharedClient] initializeSDKWithOptions:options];
     if (error)

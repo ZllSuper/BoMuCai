@@ -33,5 +33,7 @@
 #import "LBProgressHUD.h"
 #import <HyphenateLite/HyphenateLite.h>
 #import "EaseUI.h"
+#import "UIViewController+UMeng.h"
+
 #endif
 #endif /* BoMuCai_Prefix_h */

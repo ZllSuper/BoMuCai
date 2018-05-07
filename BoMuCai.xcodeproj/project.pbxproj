@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6522EBFC209FEB41001179A8 /* UIViewController+UMeng.m in Sources */ = {isa = PBXBuildFile; fileRef = 6522EBFB209FEB41001179A8 /* UIViewController+UMeng.m */; };
+		6522EC11209FF502001179A8 /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6522EC09209FF502001179A8 /* UMCommon.framework */; };
+		6522EC12209FF502001179A8 /* UMAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6522EC0C209FF502001179A8 /* UMAnalytics.framework */; };
+		6522EC1420A017B9001179A8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6522EC1320A017B9001179A8 /* SystemConfiguration.framework */; };
 		6558CBD71FE3FD8000FD5F02 /* PCKConfirmRevRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6558CBD61FE3FD8000FD5F02 /* PCKConfirmRevRequest.m */; };
 		6598BE741FE36B3400111640 /* SheetPresentStyleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6598BE721FE36B3300111640 /* SheetPresentStyleView.m */; };
 		6598BE771FE36C0F00111640 /* BMShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6598BE761FE36C0F00111640 /* BMShareView.m */; };
@@ -625,6 +629,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6522EBFA209FEB41001179A8 /* UIViewController+UMeng.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UMeng.h"; sourceTree = "<group>"; };
+		6522EBFB209FEB41001179A8 /* UIViewController+UMeng.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UMeng.m"; sourceTree = "<group>"; };
+		6522EC09209FF502001179A8 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
+		6522EC0C209FF502001179A8 /* UMAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMAnalytics.framework; sourceTree = "<group>"; };
+		6522EC1320A017B9001179A8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6558CBD51FE3FD8000FD5F02 /* PCKConfirmRevRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCKConfirmRevRequest.h; sourceTree = "<group>"; };
 		6558CBD61FE3FD8000FD5F02 /* PCKConfirmRevRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCKConfirmRevRequest.m; sourceTree = "<group>"; };
 		6598BE721FE36B3300111640 /* SheetPresentStyleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SheetPresentStyleView.m; sourceTree = "<group>"; };
@@ -1746,12 +1755,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6522EC1420A017B9001179A8 /* SystemConfiguration.framework in Frameworks */,
+				6522EC11209FF502001179A8 /* UMCommon.framework in Frameworks */,
 				A60ADCDC1EA754FA00B1D4E0 /* CoreMotion.framework in Frameworks */,
 				A60ADCDA1EA7528300B1D4E0 /* CoreTelephony.framework in Frameworks */,
 				A6045C1E1E66C765008924D1 /* libstdc++.6.0.9.tbd in Frameworks */,
 				A686DCDC1FAC723B00080A41 /* libPaymentControl.a in Frameworks */,
 				65C3669520119CE300B32E80 /* libopencore-amrnb.a in Frameworks */,
 				A60458D91E669188008924D1 /* libc++.tbd in Frameworks */,
+				6522EC12209FF502001179A8 /* UMAnalytics.framework in Frameworks */,
 				A60458D71E669180008924D1 /* libz.tbd in Frameworks */,
 				65C3669420119CE300B32E80 /* libopencore-amrwb.a in Frameworks */,
 				A67959C71FA7043100CCB326 /* TencentOpenAPI.framework in Frameworks */,
@@ -1787,6 +1799,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6522EBFD209FF501001179A8 /* UMeng */ = {
+			isa = PBXGroup;
+			children = (
+				6522EC06209FF502001179A8 /* common */,
+				6522EC0A209FF502001179A8 /* analytics */,
+			);
+			path = UMeng;
+			sourceTree = "<group>";
+		};
+		6522EC06209FF502001179A8 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				6522EC07209FF502001179A8 /* common_ios_1.5.0 */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		6522EC07209FF502001179A8 /* common_ios_1.5.0 */ = {
+			isa = PBXGroup;
+			children = (
+				6522EC08209FF502001179A8 /* normal */,
+			);
+			path = common_ios_1.5.0;
+			sourceTree = "<group>";
+		};
+		6522EC08209FF502001179A8 /* normal */ = {
+			isa = PBXGroup;
+			children = (
+				6522EC09209FF502001179A8 /* UMCommon.framework */,
+			);
+			path = normal;
+			sourceTree = "<group>";
+		};
+		6522EC0A209FF502001179A8 /* analytics */ = {
+			isa = PBXGroup;
+			children = (
+				6522EC0B209FF502001179A8 /* analytics_ios_5.5.0 */,
+			);
+			path = analytics;
+			sourceTree = "<group>";
+		};
+		6522EC0B209FF502001179A8 /* analytics_ios_5.5.0 */ = {
+			isa = PBXGroup;
+			children = (
+				6522EC0C209FF502001179A8 /* UMAnalytics.framework */,
+			);
+			path = analytics_ios_5.5.0;
+			sourceTree = "<group>";
+		};
 		65C3654A20119CE200B32E80 /* EaseUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -2355,6 +2416,7 @@
 		A61101D71E2C6E6900055B5C /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				6522EBFD209FF501001179A8 /* UMeng */,
 				65F8B2881FEB9642000A86C9 /* AliPaySDK */,
 				A686DCD21FAC723B00080A41 /* paymentcontrol */,
 				A67959C11FA7043000CCB326 /* QQSDK */,
@@ -2644,6 +2706,8 @@
 				A611028A1E2C6E6900055B5C /* UIViewController+EmptyView.m */,
 				A611028B1E2C6E6900055B5C /* UIViewController+SwizzledController.h */,
 				A611028C1E2C6E6900055B5C /* UIViewController+SwizzledController.m */,
+				6522EBFA209FEB41001179A8 /* UIViewController+UMeng.h */,
+				6522EBFB209FEB41001179A8 /* UIViewController+UMeng.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -2741,6 +2805,7 @@
 		A611036C1E2C702100055B5C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6522EC1320A017B9001179A8 /* SystemConfiguration.framework */,
 				65C3654A20119CE200B32E80 /* EaseUI */,
 				A60ADCDB1EA754FA00B1D4E0 /* CoreMotion.framework */,
 				A60ADCD91EA7528300B1D4E0 /* CoreTelephony.framework */,
@@ -4238,6 +4303,7 @@
 				A61DA60D1E484A5B00E614A9 /* PersonCenterIconAndNameView.m in Sources */,
 				A61CECE11E657611004F7F3E /* PCAddressEditRequest.m in Sources */,
 				A634ACD71E56EEB300757F8D /* PCChangePasswordRequest.m in Sources */,
+				6522EBFC209FEB41001179A8 /* UIViewController+UMeng.m in Sources */,
 				65C3669920119CE300B32E80 /* EMCDDeviceManager+Remind.m in Sources */,
 				A611035D1E2C6E6900055B5C /* BXHEmptyShowView.m in Sources */,
 				A6EBE9831E46C74A00F134FF /* CarOrderInputBottomView.m in Sources */,
@@ -4571,6 +4637,10 @@
 					"$(PROJECT_DIR)/BoMuCai/Parse",
 					"$(PROJECT_DIR)/BoMuCai/ThirdPart/QQSDK",
 					"$(PROJECT_DIR)/BoMuCai/ThirdPart/AliPaySDK",
+					"$(PROJECT_DIR)/BoMuCai/ThirdPart/UMeng/umcommonlog/umcommonlog_ios_1.0.0",
+					"$(PROJECT_DIR)/BoMuCai/ThirdPart/UMeng/thirdparties/thirdparties_ios_1.0.5",
+					"$(PROJECT_DIR)/BoMuCai/ThirdPart/UMeng/common/common_ios_1.5.0/normal",
+					"$(PROJECT_DIR)/BoMuCai/ThirdPart/UMeng/analytics/analytics_ios_5.5.0",
 				);
 				GCC_PREFIX_HEADER = "BoMuCai/BoMuCai-Prefix.h";
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/BoMuCai/ThirdPart/AliPaySDK";
@@ -4588,7 +4658,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.baicaiwang.onlinemarket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2111d470-74b9-4e3e-94b0-d910e9bc873f";
+				PROVISIONING_PROFILE = "c6c29462-0e75-4962-b61b-9643fa14e11e";
 				PROVISIONING_PROFILE_SPECIFIER = baicai_dev;
 			};
 			name = Debug;
@@ -4609,6 +4679,10 @@
 					"$(PROJECT_DIR)/BoMuCai/Parse",
 					"$(PROJECT_DIR)/BoMuCai/ThirdPart/QQSDK",
 					"$(PROJECT_DIR)/BoMuCai/ThirdPart/AliPaySDK",
+					"$(PROJECT_DIR)/BoMuCai/ThirdPart/UMeng/umcommonlog/umcommonlog_ios_1.0.0",
+					"$(PROJECT_DIR)/BoMuCai/ThirdPart/UMeng/thirdparties/thirdparties_ios_1.0.5",
+					"$(PROJECT_DIR)/BoMuCai/ThirdPart/UMeng/common/common_ios_1.5.0/normal",
+					"$(PROJECT_DIR)/BoMuCai/ThirdPart/UMeng/analytics/analytics_ios_5.5.0",
 				);
 				GCC_PREFIX_HEADER = "BoMuCai/BoMuCai-Prefix.h";
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/BoMuCai/ThirdPart/AliPaySDK";
@@ -4626,7 +4700,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.baicaiwang.onlinemarket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2ba425f1-226f-47e1-8db9-d18809cc874b";
+				PROVISIONING_PROFILE = "c8a18ce8-2889-48e8-889c-a23c4945401a";
 				PROVISIONING_PROFILE_SPECIFIER = baicai_hoc;
 			};
 			name = Release;
