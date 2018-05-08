@@ -401,6 +401,11 @@
         _tableView = [[WaresDetailTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.protcol = self;
         [_tableView.moreFooterView.moreBtn addTarget:self action:@selector(moreCommentAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        if (@available(iOS 11, *)) {
+            _tableView.estimatedRowHeight = 0;
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     return _tableView;
 }

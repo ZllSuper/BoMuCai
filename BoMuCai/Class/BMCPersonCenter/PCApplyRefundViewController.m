@@ -106,7 +106,12 @@
 
 - (void)sureBtnAction
 {
-    [self cancelDelRequest];
+    if (self.textView.text.length > 0) {
+        [self cancelDelRequest];
+    }
+    else {
+        ToastShowCenter(@"请输入退款原因");
+    }
 }
 
 #pragma mark - request

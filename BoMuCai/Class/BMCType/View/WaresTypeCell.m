@@ -58,7 +58,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = Font_sys_14;
         _titleLabel.textColor = Color_MainText;
-        _titleLabel.text = @"选择型号";
+        _titleLabel.text = @"已选择";
     }
     return _titleLabel;
 }

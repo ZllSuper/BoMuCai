@@ -50,7 +50,8 @@
 + (BOOL) validatePassword:(NSString *)passWord
 {
     
-    NSString *passWordRegex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$";//@"^[a-zA-Z0-9]{6,16}+$";
+//    NSString *passWordRegex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$";//@"^[a-zA-Z0-9]{6,16}+$";
+    NSString *passWordRegex = @"^[a-zA-Z0-9]{6,16}+$";
     NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];
     return [passWordPredicate evaluateWithObject:passWord];
 }

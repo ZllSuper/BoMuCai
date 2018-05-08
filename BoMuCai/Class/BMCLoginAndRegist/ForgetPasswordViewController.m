@@ -100,18 +100,18 @@
         ProgressHidden(weakSelf.view);
         if ([request.response.code isEqualToString:@"0000"])
         {
-            ToastShowBottom(@"修改成功");
+            ToastShowCenter(@"修改成功");
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
             
         }
         else
         {
-            ToastShowBottom(request.response.message);
+            ToastShowCenter(request.response.message);
         }
         
     } failure:^(NSError *error, BXHBaseRequest *request) {
         ProgressHidden(weakSelf.view);
-        ToastShowBottom(NetWorkErrorTip);
+        ToastShowCenter(NetWorkErrorTip);
     }];
 
 }
@@ -123,13 +123,13 @@
     [self.view endEditing:YES];
     if (![self.passwordTextFiled.inputTextFiled.text isEqualToString:self.confirmPasswordTextFiled.inputTextFiled.text])
     {
-        ToastShowBottom(@"两次输入的密码不一样");
+        ToastShowCenter(@"两次密码输入不一致");
         return;
     }
     
     if (![TSRegularExpressionUtil validatePassword:self.passwordTextFiled.inputTextFiled.text])
     {
-        ToastShowBottom(@"密码格式不正确");
+        ToastShowCenter(@"请输入6～16位数字和字母密码");
         return;
     }
     [self forgetPasswordRequest];
@@ -138,14 +138,14 @@
 #pragma mark - textFiledDelegate
 - (void)textFiledDidEndEditing:(RegistInputTextFiled *)textFiled
 {
-    if (!StringIsEmpty(self.passwordTextFiled.inputTextFiled.text) && !StringIsEmpty(self.confirmPasswordTextFiled.inputTextFiled.text))
-    {
-        self.submitBtn.enabled = YES;
-    }
-    else
-    {
-        self.submitBtn.enabled = NO;
-    }
+//    if (!StringIsEmpty(self.passwordTextFiled.inputTextFiled.text) && !StringIsEmpty(self.confirmPasswordTextFiled.inputTextFiled.text))
+//    {
+//        self.submitBtn.enabled = YES;
+//    }
+//    else
+//    {
+//        self.submitBtn.enabled = NO;
+//    }
 }
 
 #pragma mark - get
@@ -186,7 +186,7 @@
         _submitBtn.layer.cornerRadius = 6;
         _submitBtn.clipsToBounds = YES;
         [_submitBtn addTarget:self action:@selector(submitBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        _submitBtn.enabled = NO;
+//        _submitBtn.enabled = NO;
     }
     return _submitBtn;
 }

@@ -118,27 +118,31 @@
         ProgressHidden(weakSelf.view);
         if ([request.response.code isEqualToString:@"0000"])
         {
+            [[AccountInfo shareInstance] resetSourceWithDict:request.response.data];
+            [[AccountInfo shareInstance] saveToDisk];
+            
             [[EMClient sharedClient] loginWithUsername:KAccountInfo.easemob password:KAccountInfo.easemobPassword completion:^(NSString *aUsername, EMError *aError) {
                 
                 if (!aError) {
                     //设置是否自动登录
                     [[EMClient sharedClient].options setIsAutoLogin:YES];
                     
-                    ToastShowBottom(@"注册成功");
-                    [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+                    ToastShowCenter(@"注册成功");
+//                    [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+                    [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
                 }
                 else {
-                    ToastShowBottom(_StrFormate(@"环信登录失败：%@",aError.errorDescription));
+                    ToastShowCenter(_StrFormate(@"环信登录失败：%@",aError.errorDescription));
                 }
             }];
         }
         else
         {
-            ToastShowBottom(request.response.message);
+            ToastShowCenter(request.response.message);
         }
     } failure:^(NSError *error, BXHBaseRequest *request) {
         ProgressHidden(weakSelf.view);
-        ToastShowBottom(NetWorkErrorTip);
+        ToastShowCenter(NetWorkErrorTip);
     }];
 }
 
@@ -146,14 +150,14 @@
 - (void)radioBtnAction
 {
     self.radioBtn.selected = !self.radioBtn.selected;
-    if (!StringIsEmpty(self.passwordTextFiled.inputTextFiled.text) && !StringIsEmpty(self.confirmPasswordTextFiled.inputTextFiled.text) && self.radioBtn.selected)
-    {
-        self.submitBtn.enabled = YES;
-    }
-    else
-    {
-        self.submitBtn.enabled = NO;
-    }
+//    if (!StringIsEmpty(self.passwordTextFiled.inputTextFiled.text) && !StringIsEmpty(self.confirmPasswordTextFiled.inputTextFiled.text) && self.radioBtn.selected)
+//    {
+//        self.submitBtn.enabled = YES;
+//    }
+//    else
+//    {
+//        self.submitBtn.enabled = NO;
+//    }
 
 }
 
@@ -169,19 +173,19 @@
     [self.view endEditing:YES];
     if (![self.passwordTextFiled.inputTextFiled.text isEqualToString:self.confirmPasswordTextFiled.inputTextFiled.text])
     {
-        ToastShowBottom(@"两次输入的密码不一样");
+        ToastShowCenter(@"两次密码输入不一致");
         return;
     }
     
     if (![TSRegularExpressionUtil validatePassword:self.passwordTextFiled.inputTextFiled.text])
     {
-        ToastShowBottom(@"密码格式不正确");
+        ToastShowCenter(@"请输入6～16位数字和字母密码");
         return;
     }
 
     if(!self.radioBtn.selected)
     {
-        ToastShowBottom(@"请阅读并同意用户协议和法律声明");
+        ToastShowCenter(@"请阅读并同意用户协议和法律声明");
         return;
     }
     
@@ -191,14 +195,14 @@
 #pragma mark - textFiledDelegate
 - (void)textFiledDidEndEditing:(RegistInputTextFiled *)textFiled
 {
-    if (!StringIsEmpty(self.passwordTextFiled.inputTextFiled.text) && !StringIsEmpty(self.confirmPasswordTextFiled.inputTextFiled.text) && self.radioBtn.selected)
-    {
-        self.submitBtn.enabled = YES;
-    }
-    else
-    {
-        self.submitBtn.enabled = NO;
-    }
+//    if (!StringIsEmpty(self.passwordTextFiled.inputTextFiled.text) && !StringIsEmpty(self.confirmPasswordTextFiled.inputTextFiled.text) && self.radioBtn.selected)
+//    {
+//        self.submitBtn.enabled = YES;
+//    }
+//    else
+//    {
+//        self.submitBtn.enabled = NO;
+//    }
 }
 
 #pragma mark - get
@@ -264,7 +268,7 @@
         _submitBtn.layer.cornerRadius = 6;
         _submitBtn.clipsToBounds = YES;
         [_submitBtn addTarget:self action:@selector(submitBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        _submitBtn.enabled = NO;
+//        _submitBtn.enabled = NO;
     }
     return _submitBtn;
 }

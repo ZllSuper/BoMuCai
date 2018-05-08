@@ -111,16 +111,16 @@
         if ([request.response.code isEqualToString:@"0000"])
         {
             [weakSelf.authBtn startVerify:60];
-            ToastShowBottom(@"验证码发送成功");
+            ToastShowCenter(@"验证码发送成功");
         }
         else
         {
-            ToastShowBottom(request.response.message);
+            ToastShowCenter(request.response.message);
         }
         
     } failure:^(NSError *error, BXHBaseRequest *request) {
         ProgressHidden(weakSelf.view);
-        ToastShowBottom(NetWorkErrorTip);
+        ToastShowCenter(NetWorkErrorTip);
     }];
 }
 
@@ -130,7 +130,7 @@
     [self.view endEditing:YES];
     if (![TSRegularExpressionUtil validateMobile:self.phoneTextFiled.inputTextFiled.text])
     {
-        ToastShowBottom(@"手机号格式错误");
+        ToastShowCenter(@"请输入正确手机号");
         return;
     }
     
@@ -141,13 +141,13 @@
 {
     if (![TSRegularExpressionUtil validateMobile:self.phoneTextFiled.inputTextFiled.text])
     {
-        ToastShowBottom(@"手机号格式错误");
+        ToastShowCenter(@"请输入正确手机号");
         return;
     }
 
     if(self.codeTextFiled.inputTextFiled.text.length != 6)
     {
-        ToastShowBottom(@"验证码错误");
+        ToastShowCenter(@"验证码错误");
         return;
     }
     
@@ -158,14 +158,14 @@
 #pragma mark - textFiledDelegate
 - (void)textFiledDidEndEditing:(RegistInputTextFiled *)textFiled
 {
-    if (!StringIsEmpty(self.phoneTextFiled.inputTextFiled.text)  && !StringIsEmpty(self.codeTextFiled.inputTextFiled.text))
-    {
-        self.nextBtn.enabled = YES;
-    }
-    else
-    {
-        self.nextBtn.enabled = NO;
-    }
+//    if (!StringIsEmpty(self.phoneTextFiled.inputTextFiled.text)  && !StringIsEmpty(self.codeTextFiled.inputTextFiled.text))
+//    {
+//        self.nextBtn.enabled = YES;
+//    }
+//    else
+//    {
+//        self.nextBtn.enabled = NO;
+//    }
 }
 
 #pragma mark - get
@@ -235,7 +235,7 @@
         _nextBtn.layer.cornerRadius = 6;
         _nextBtn.clipsToBounds = YES;
         [_nextBtn addTarget:self action:@selector(nextBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        _nextBtn.enabled = NO;
+//        _nextBtn.enabled = NO;
     }
     return _nextBtn;
 }

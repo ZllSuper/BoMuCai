@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, SectionActionType)
 
 @protocol WaresSectionHeaderViewDelegate <NSObject>
 
-- (void)sectionView:(WaresSectionHeaderView *)sectionView actionType:(SectionActionType)actionType;
+- (BOOL)sectionView:(WaresSectionHeaderView *)sectionView actionType:(SectionActionType)actionType;
 
 @end
 

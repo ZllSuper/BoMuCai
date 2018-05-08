@@ -141,6 +141,7 @@
         ProgressHidden(weakSelf.view);
         if ([request.response.code isEqualToString:@"0000"])
         {
+            ToastShowCenter(@"提交成功");
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
         else
@@ -157,7 +158,12 @@
 #pragma mark - action
 - (void)submitAction
 {
-    [self requestFeedBack];
+    if (self.textView.textView.text.length > 0) {
+        [self requestFeedBack];
+    }
+    else {
+        ToastShowCenter(@"请输入反馈意见");
+    }
 }
 
 #pragma mark - get

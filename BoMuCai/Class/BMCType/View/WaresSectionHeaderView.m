@@ -70,39 +70,73 @@
 #pragma mark - action
 - (void)detailBtnAction
 {
-    if (self.detailBtn.selected)
-    {
-        return;
-    }
-    self.commentBtn.selected = NO;
-    self.detailBtn.selected = YES;
-    [UIView animateWithDuration:0.3 animations:^{
-        self.lineViewCenterX.offset = -60;
-        [self layoutIfNeeded];
-    }];
+//    if (self.detailBtn.selected)
+//    {
+//        return;
+//    }
+//    self.commentBtn.selected = NO;
+//    self.detailBtn.selected = YES;
+//    [UIView animateWithDuration:0.3 animations:^{
+//        self.lineViewCenterX.offset = -60;
+//        [self layoutIfNeeded];
+//    }];
+//
+//    if (self.delegate)
+//    {
+//        [self.delegate sectionView:self actionType:SectionDetailActionType];
+//    }
     
     if (self.delegate)
     {
-        [self.delegate sectionView:self actionType:SectionDetailActionType];
+        BOOL res = [self.delegate sectionView:self actionType:SectionDetailActionType];
+        if (res) {
+            if (self.detailBtn.selected)
+            {
+                return;
+            }
+            self.commentBtn.selected = NO;
+            self.detailBtn.selected = YES;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.lineViewCenterX.offset = -60;
+                [self layoutIfNeeded];
+            }];
+        }
     }
 }
 
 - (void)commentBtnAction
 {
-    if (self.commentBtn.selected)
-    {
-        return;
-    }
-    self.commentBtn.selected = YES;
-    self.detailBtn.selected = NO;
-    [UIView animateWithDuration:0.3 animations:^{
-        self.lineViewCenterX.offset = 60;
-        [self layoutIfNeeded];
-    }];
-    
+//    if (self.commentBtn.selected)
+//    {
+//        return;
+//    }
+//    self.commentBtn.selected = YES;
+//    self.detailBtn.selected = NO;
+//    [UIView animateWithDuration:0.3 animations:^{
+//        self.lineViewCenterX.offset = 60;
+//        [self layoutIfNeeded];
+//    }];
+//
+//    if (self.delegate)
+//    {
+//        [self.delegate sectionView:self actionType:SectionCommentActionType];
+//    }
+//
     if (self.delegate)
     {
-        [self.delegate sectionView:self actionType:SectionCommentActionType];
+        BOOL res = [self.delegate sectionView:self actionType:SectionCommentActionType];
+        if (res) {
+            if (self.commentBtn.selected)
+            {
+                return;
+            }
+            self.commentBtn.selected = YES;
+            self.detailBtn.selected = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.lineViewCenterX.offset = 60;
+                [self layoutIfNeeded];
+            }];
+        }
     }
 }
 

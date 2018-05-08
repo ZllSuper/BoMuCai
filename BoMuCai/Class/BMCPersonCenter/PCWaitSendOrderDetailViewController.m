@@ -370,7 +370,7 @@
 {
     if (!_bottomView)
     {
-        _bottomView = [[PCOrderDetailBtnBottomView alloc] initWithTitles:@[@"退款",@"提醒发货"]];
+        _bottomView = [[PCOrderDetailBtnBottomView alloc] initWithTitles:@[@"取消订单",@"提醒发货"]];
         _bottomView.delegate = self;
     }
     return _bottomView;

@@ -100,15 +100,15 @@
 - (void)bottomBtnAction
 {
     [self.view endEditing:YES];
-    if(StringIsEmpty(self.passwordOrCell.textFiled.text))
+    if(StringIsEmpty(self.passwordOrCell.textFiled.text) || ![TSRegularExpressionUtil validatePassword:self.passwordOrCell.textFiled.text])
     {
-        ToastShowCenter(@"请输入原密码");
+        ToastShowCenter(@"请输入6～16位数字和字母原密码");
         return;
     }
     
-    if(StringIsEmpty(self.passwordNewCell.textFiled.text))
+    if(StringIsEmpty(self.passwordNewCell.textFiled.text) || ![TSRegularExpressionUtil validatePassword:self.passwordNewCell.textFiled.text])
     {
-        ToastShowCenter(@"请输入新密码");
+        ToastShowCenter(@"请输入6～16位数字和字母新密码");
         return;
     }
 
@@ -119,15 +119,9 @@
         return;
     }
     
-    if (![TSRegularExpressionUtil validatePassword:self.passwordNewCell.textFiled.text])
-    {
-        ToastShowCenter(@"新密码格式错误");
-        return;
-    }
-    
     if(![self.passwordNewCell.textFiled.text isEqualToString:self.passwordConfirmCell.textFiled.text])
     {
-        ToastShowCenter(@"新密码两次输入的不一样");
+        ToastShowCenter(@"新密码两次输入不一致");
         return;
     }
     

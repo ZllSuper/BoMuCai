@@ -68,10 +68,14 @@
             "%@"
             "</div></body></html>", weakSelf.detailModel.remark];
             
-            [weakSelf.webCell.webView loadHTMLString:html baseURL:nil];
             [weakSelf reloadData];
             
             weakSelf.refreshCallBack(weakSelf,YES);
+            [weakSelf.webCell.webView loadHTMLString:html baseURL:nil];
+
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.webCell.webView setNeedsLayout];
+            });
         }
         else
         {
@@ -103,10 +107,32 @@
     }
 }
 
-- (void)sectionView:(WaresSectionHeaderView *)sectionView actionType:(SectionActionType)actionType
+//- (void)sectionView:(WaresSectionHeaderView *)sectionView actionType:(SectionActionType)actionType
+//{
+//    self.actionType = actionType;
+//    [self reloadData];
+//}
+
+- (BOOL)sectionView:(WaresSectionHeaderView *)sectionView actionType:(SectionActionType)actionType
 {
-    self.actionType = actionType;
-    [self reloadData];
+    if (actionType == SectionDetailActionType) {
+        self.actionType = actionType;
+        [self reloadData];
+        return YES;
+    }
+    else if (actionType == SectionCommentActionType) {
+        if (self.detailModel.assessDto.count>0) {
+            self.actionType = actionType;
+            [self reloadData];
+            return YES;
+        }
+        else {
+            ToastShowCenter(@"暂无评价");
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 #pragma mark tableDelegate / dataSOurce
@@ -386,6 +412,7 @@
         {
             if (self.actionType == SectionDetailActionType)
             {
+//                [self.webCell setNeedsLayout];
                 return self.webCell;
             }
             else
@@ -427,11 +454,10 @@
 - (void)scrollViewDidEndDragging:(UIScrollView*)scrollView willDecelerate:(BOOL)decelerate;
 
 {
-    if([UIDevice currentDevice].systemVersion.floatValue>=10)
-    {
-        [self.webCell.webView setNeedsLayout];
-    }
-    
+//    if([UIDevice currentDevice].systemVersion.floatValue>=10)
+//    {
+//        [self.webCell.webView setNeedsLayout];
+//    }
 }
 
 #pragma mark -cellDelegate

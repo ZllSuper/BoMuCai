@@ -19,6 +19,7 @@
         [self addSubview:lineView];
         [self addSubview:self.titleLabel];
         [self addSubview:self.phoneIcon];
+        [self addSubview:self.phoneBtn];
         
         [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.and.left.and.right.mas_equalTo(self);
@@ -32,6 +33,10 @@
         [self.phoneIcon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.titleLabel.mas_left).offset(-15);
             make.centerY.mas_equalTo(self);
+        }];
+        
+        [self.phoneBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.bottom.right.mas_equalTo(self);
         }];
     }
     return self;
@@ -63,9 +68,18 @@
     {
         _phoneIcon = [[UIButton alloc] init];
         [_phoneIcon setImage:ImageWithName(@"PCPhoneCallBtn") forState:UIControlStateNormal];
-        [_phoneIcon addTarget:self action:@selector(phoneButtonAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _phoneIcon;
+}
+
+- (UIButton *)phoneBtn
+{
+    if (!_phoneBtn)
+    {
+        _phoneBtn = [[UIButton alloc] init];
+        [_phoneBtn addTarget:self action:@selector(phoneButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _phoneBtn;
 }
 
 - (void)phoneButtonAction

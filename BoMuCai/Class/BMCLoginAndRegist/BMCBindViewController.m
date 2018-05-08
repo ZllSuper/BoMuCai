@@ -179,7 +179,7 @@
         _accountTextFiled = [[LoginInputTextFiledView alloc] init];
         _accountTextFiled.sourceDelegate = self;
         _accountTextFiled.inputTextFiled.placeholder = @"请输入手机号";
-        _accountTextFiled.errorTipLabel.text = @"手机号错误";
+        _accountTextFiled.errorTipLabel.text = @"请输入正确手机号";
         _accountTextFiled.inputTextFiled.keyboardType = UIKeyboardTypeNumberPad;
     }
     return _accountTextFiled;
@@ -192,6 +192,7 @@
         _passwordTextFiled = [[LoginInputTextFiledView alloc] init];
         _passwordTextFiled.sourceDelegate = self;
         _passwordTextFiled.inputTextFiled.placeholder = @"请输入密码";
+        _passwordTextFiled.errorTipLabel.text = @"请输入正确手机号";
         _passwordTextFiled.inputTextFiled.secureTextEntry = YES;
     }
     return _passwordTextFiled;

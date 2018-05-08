@@ -148,22 +148,22 @@ static NSString *kAuthState = @"App";
                     //设置是否自动登录
                     [[EMClient sharedClient].options setIsAutoLogin:YES];
                     
-                    ToastShowBottom(@"登录成功");
+                    ToastShowCenter(@"登录成功");
                     [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
                 }
                 else {
-                    ToastShowBottom(_StrFormate(@"环信登录失败：%@",aError.errorDescription));
+                    ToastShowCenter(_StrFormate(@"环信登录失败：%@",aError.errorDescription));
                 }
             }];
         }
         else
         {
-            ToastShowBottom(request.response.message);
+            ToastShowCenter(request.response.message);
         }
         
     } failure:^(NSError *error, BXHBaseRequest *request) {
         ProgressHidden(weakSelf.view);
-        ToastShowBottom(NetWorkErrorTip);
+        ToastShowCenter(NetWorkErrorTip);
     }];
 }
 
@@ -187,11 +187,11 @@ static NSString *kAuthState = @"App";
                     //设置是否自动登录
                     [[EMClient sharedClient].options setIsAutoLogin:YES];
                     
-                    ToastShowBottom(@"登录成功");
+                    ToastShowCenter(@"登录成功");
                     [selfWeak.navigationController dismissViewControllerAnimated:YES completion:nil];
                 }
                 else {
-                    ToastShowBottom(_StrFormate(@"环信登录失败：%@",aError.errorDescription));
+                    ToastShowCenter(_StrFormate(@"环信登录失败：%@",aError.errorDescription));
                 }
             }];
         }
@@ -205,11 +205,11 @@ static NSString *kAuthState = @"App";
         else
         {
             ProgressHidden(selfWeak.view);
-            ToastShowBottom(request.response.message);
+            ToastShowCenter(request.response.message);
         }
     } failure:^(NSError *error, BXHBaseRequest *request) {
         ProgressHidden(selfWeak.view);
-        ToastShowBottom(NetWorkErrorTip);
+        ToastShowCenter(NetWorkErrorTip);
     }];
 }
 
@@ -222,6 +222,18 @@ static NSString *kAuthState = @"App";
 - (void)loginBtnAction
 {
     [self.view endEditing:YES];
+    
+    if (StringIsEmpty(self.accountTextFiled.inputTextFiled.text) || [TSRegularExpressionUtil validateMobile:self.accountTextFiled.inputTextFiled.text] == NO)
+    {
+        ToastShowCenter(@"请输入正确手机号");
+        return;
+    }
+    
+    if (StringIsEmpty(self.passwordTextFiled.inputTextFiled.text) || [TSRegularExpressionUtil validatePassword:self.passwordTextFiled.inputTextFiled.text] == NO) {
+        ToastShowCenter(@"请输入6～16位数字和字母密码");
+        return;
+    }
+    
     [self loginRequest];
 }
 
@@ -258,7 +270,7 @@ static NSString *kAuthState = @"App";
         }
         else
         {
-            ToastShowBottom(message);
+            ToastShowCenter(message);
         }
     }];
 }
@@ -268,7 +280,7 @@ static NSString *kAuthState = @"App";
 {
     if (StringIsEmpty(response.code))
     {
-        ToastShowBottom(@"微信登录失败");
+        ToastShowCenter(@"微信登录失败");
         return;
     }
     
@@ -285,19 +297,25 @@ static NSString *kAuthState = @"App";
         [selfWeakStrong thirdPartLoginReuqest:openid];
     } failure:^(NSError *error, BXHBaseRequest *request) {
         ProgressHidden(selfWeak.view);
-        ToastShowBottom(NetWorkErrorTip);
+        ToastShowCenter(NetWorkErrorTip);
     }];
 }
 
 #pragma mark - textFiledDelegate
 - (BOOL)inputTextFiledErrorWithEndEditing:(LoginInputTextFiledView *)textFiled
 {
+    return YES;
+    
     BOOL returnBool = YES;
     
     if ([textFiled isEqual:self.accountTextFiled])
     {
         returnBool = [TSRegularExpressionUtil validateMobile:textFiled.inputTextFiled.text];
     }
+    else if ([textFiled isEqual:self.passwordTextFiled]) {
+        returnBool = [TSRegularExpressionUtil validatePassword:textFiled.inputTextFiled.text];
+    }
+    
     if ([TSRegularExpressionUtil validateMobile:self.accountTextFiled.inputTextFiled.text] && !StringIsEmpty(self.passwordTextFiled.inputTextFiled.text))
     {
         self.loginBtn.enabled = YES;
@@ -340,7 +358,6 @@ static NSString *kAuthState = @"App";
         _accountTextFiled = [[LoginInputTextFiledView alloc] init];
         _accountTextFiled.sourceDelegate = self;
         _accountTextFiled.inputTextFiled.placeholder = @"请输入手机号";
-        _accountTextFiled.errorTipLabel.text = @"手机号错误";
         _accountTextFiled.inputTextFiled.keyboardType = UIKeyboardTypeNumberPad;
     }
     return _accountTextFiled;
@@ -370,7 +387,7 @@ static NSString *kAuthState = @"App";
         [_loginBtn addTarget:self action:@selector(loginBtnAction) forControlEvents:UIControlEventTouchUpInside];
         _loginBtn.layer.cornerRadius = 6;
         _loginBtn.clipsToBounds = YES;
-        _loginBtn.enabled = NO;
+//        _loginBtn.enabled = NO;
     }
     return _loginBtn;
 }

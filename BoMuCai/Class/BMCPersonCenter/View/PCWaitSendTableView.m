@@ -126,7 +126,7 @@
     footerView.frePriceSecLabel.text = _StrFormate(@"(包含运费￥%@)",MoneyDeal(orderModel.yunfei));
     footerView.delegate = self;
     [footerView.remindBtn setTitle:@"提醒发货" forState:UIControlStateNormal];
-    [footerView.cancelOrderBtn setTitle:@"退款" forState:UIControlStateNormal];
+    [footerView.cancelOrderBtn setTitle:@"取消订单" forState:UIControlStateNormal];
     footerView.thirdBtn.hidden = YES;
     footerView.orderModel = orderModel;
     return footerView;

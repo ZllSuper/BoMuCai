@@ -109,7 +109,8 @@
     [alert addAction:[BXHAlertAction actionWithTitle:@"否" titleColor:Color_Text_Gray handler:^(BXHAlertAction *action) {
         
     }]];
-    [self.navigationController presentViewController:alert animated:YES completion:nil];}
+    [self.navigationController presentViewController:alert animated:YES completion:nil];
+}
 
 #pragma mark - get
 - (PCWaitSendTableView *)tableView

@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) UIButton *phoneIcon;
 
+@property (nonatomic, strong) UIButton *phoneBtn;
+
 @end
