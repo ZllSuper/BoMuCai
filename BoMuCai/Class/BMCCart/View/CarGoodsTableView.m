@@ -7,6 +7,7 @@
 //
 
 #import "CarGoodsTableView.h"
+#import "CarCountCalculateView.h"
 
 @implementation CarGoodsTableView
 
@@ -87,8 +88,9 @@
     }];
 }
 
-- (void)goodsNumChangeRequest:(CarGoodModel *)goodsModel andAmount:(NSString *)amount
+- (void)goodsNumChangeRequest:(CarGoodsCell *)cell andAmount:(NSString *)amount
 {
+    CarGoodModel *goodsModel = cell.weakModel;
     BXHWeakObj(self);
     BXHBlockObj(goodsModel);
     BXHBlockObj(amount);
@@ -102,6 +104,7 @@
         {
             goodsModelblock.amount = amountblock;
             [selfWeak.selectDelegate tableViewGoodsNumChange:selfWeak];
+            cell.weakModel = goodsModel;
         }
 //        else if ([request.response.code isEqualToString:@"0029"])
 //        {
@@ -128,7 +131,7 @@
 #pragma mark - cellDelegate
 - (void)goodsCellTextFiledCountChange:(CarGoodsCell *)cell
 {
-    [self goodsNumChangeRequest:cell.weakModel andAmount:cell.buyCountView.countTextFiled.text];
+    [self goodsNumChangeRequest:cell andAmount:cell.buyCountView.countTextFiled.text];
 }
 
 - (void)goodsCellSelect:(CarGoodsCell *)cell
@@ -148,11 +151,18 @@
         cell.buyCountView.countTextFiled.text = [NSString stringWithFormat:@"%ld",count];
         //    cell.buyCountView.reduceBtn.enabled = count > 1;
 //        cell.buyCountView.addBtn.enabled = YES;
-        [self goodsNumChangeRequest:cell.weakModel andAmount:cell.buyCountView.countTextFiled.text];
+        [self goodsNumChangeRequest:cell andAmount:cell.buyCountView.countTextFiled.text];
     }
     else {
         ToastShowCenter(@"数量超出范围~");
     }
+}
+
+- (void)goodsCellCount:(CarGoodsCell *)cell
+{
+    [CarCountCalculateView showWithCarGoodModel:cell.weakModel completion:^(NSString *count) {
+        [self goodsNumChangeRequest:cell andAmount:count];
+    }];
 }
 
 - (void)goodsCellCountAdd:(CarGoodsCell *)cell
@@ -164,7 +174,7 @@
         cell.buyCountView.countTextFiled.text = [NSString stringWithFormat:@"%ld",count];
         //    cell.buyCountView.addBtn.enabled = count < [cell.weakModel.stock integerValue];
         //    cell.buyCountView.reduceBtn.enabled = YES;
-        [self goodsNumChangeRequest:cell.weakModel andAmount:cell.buyCountView.countTextFiled.text];
+        [self goodsNumChangeRequest:cell andAmount:cell.buyCountView.countTextFiled.text];
     }
     else {
         ToastShowCenter(@"数量超出范围~");

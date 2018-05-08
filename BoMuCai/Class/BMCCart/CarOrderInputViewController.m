@@ -21,6 +21,8 @@
 #import "CartGetDefaultAddressRequest.h"
 #import "CartOrderSubmitRequest.h"
 
+#import "BMCWaresDetailViewController.h"
+
 
 @interface CarOrderInputViewController () <UITableViewDelegate, UITableViewDataSource, CarSectionHeaderViewDelegate,PCAddressManagerViewControllerDelegate,CarOrderInputFooterViewProtcol,CarCouponChooseViewControllerDelegate>
 
@@ -91,8 +93,6 @@
 #pragma mark - request
 - (void)requestDefaultAddress
 {
-
-    
     __weak typeof(self) weakSelf = self;
     CartGetDefaultAddressRequest *item = [[CartGetDefaultAddressRequest alloc] init];
     item.userId = KAccountInfo.userId;
@@ -219,6 +219,18 @@
 - (void)couponChooseViewController:(CarCouponChooseViewController *)vc couponModel:(ShopCouponModel *)chooseModel
 {
     vc.shopModel.couponModel = chooseModel;
+    
+//    NSInteger payMoney = self.payModel.payMoney.integerValue;
+//    for (CarShopModel *shopModel in self.payModel.shopModels) {
+//        if (shopModel.couponModel) {
+//            payMoney = payMoney-shopModel.couponModel.denomination.integerValue;
+//        }
+//    }
+//    self.payModel.payMoney = _StrFormate(@"%ld",payMoney);
+
+    [self checkHaveSelect];
+    
+    _bottomView.moneyLabel.text = _StrFormate(@"￥%@",MoneyDeal(self.payModel.payMoney));
     [self.tableView reloadData];
 }
 
@@ -275,6 +287,14 @@
     // Configure the cell...
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CarShopModel *shopModel = self.payModel.shopModels[indexPath.section];
+    CarGoodModel *goodsModel = shopModel.cartMdseDto[indexPath.row];
+    BMCWaresDetailViewController *vc = [[BMCWaresDetailViewController alloc] initWithWaresDetailId:goodsModel.mdsePropertyId];
+    [self.navigationController pushViewController:vc animated:YES];
+}
  
 #pragma mark - get
 - (UITableView *)tableView
@@ -288,6 +308,11 @@
         [_tableView registerClass:[CarSectionHeaderView class] forHeaderFooterViewReuseIdentifier:[CarSectionHeaderView className]];
         [_tableView registerClass:[CarOrderInputFooterView class] forHeaderFooterViewReuseIdentifier:[CarOrderInputFooterView className]];
         _tableView.tableHeaderView = self.addressView;
+        
+        if (@available(iOS 11, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            _tableView.estimatedRowHeight = 0;
+        }
     }
     return _tableView;
 }
@@ -315,14 +340,17 @@
     return _bottomView;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark-计算总价
+- (void)checkHaveSelect
+{
+    NSInteger payMoney = 0;
+    for (CarShopModel *shopModel in self.payModel.shopModels)
+    {
+        NSLog(@"--->店铺 总价:%ld ==== 运费:%ld ====  合计:%ld",shopModel.totalPrice, shopModel.totalYunFei, (shopModel.totalPrice+shopModel.totalYunFei));
+        payMoney += (shopModel.totalYunFei + shopModel.totalPrice)-shopModel.couponModel.denomination.integerValue;
+    }
+    NSLog(@"---> 总合计:%ld <---", payMoney);
+    self.payModel.payMoney = _StrFormate(@"%ld",payMoney);
 }
-*/
 
 @end

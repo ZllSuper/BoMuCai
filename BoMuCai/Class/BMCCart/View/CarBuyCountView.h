@@ -17,5 +17,6 @@
 @property (nonatomic, strong) UIButton *reduceBtn;
 
 @property (nonatomic, strong) UITextField *countTextFiled;
+@property (nonatomic, strong) UIButton *countTextBtn;
 
 @end

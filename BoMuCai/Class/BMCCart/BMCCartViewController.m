@@ -89,7 +89,6 @@
         weakSelf.payModel.payMoney = @"0";
         weakSelf.payModel.buyNum = 0;
         [weakSelf.payModel.shopModels removeAllObjects];
-        weakSelf.bottomView.payBtn.enabled = NO;
         weakSelf.bottomView.moneyLabel.text = @"￥0.00";
         [weakSelf.bottomView.payBtn setTitle:@"结算(0)"forState:UIControlStateNormal];
     }];
@@ -201,7 +200,6 @@
 {
     self.bottomView.allSelectBtn.selected = !self.bottomView.allSelectBtn.selected;
     [self goodsChangeStatueWith:self.bottomView.allSelectBtn.selected];
-    self.bottomView.payBtn.enabled = self.bottomView.allSelectBtn.selected;
     [self checkHaveSelect];
     self.bottomView.moneyLabel.text = _StrFormate(@"￥%@",MoneyDeal(self.payModel.payMoney));
     [self.bottomView.payBtn setTitle:_StrFormate(@"结算(%ld)",self.payModel.buyNum) forState:UIControlStateNormal];
@@ -209,8 +207,13 @@
 
 - (void)payBtnAction
 {
-    CarOrderInputViewController *vc = [[CarOrderInputViewController alloc] initWithPayModel:self.payModel];
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([self.payModel.payMoney floatValue] > 0) {
+        CarOrderInputViewController *vc = [[CarOrderInputViewController alloc] initWithPayModel:self.payModel];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else {
+        ToastShowCenter(@"您没有选择商品哦");
+    }
 }
 
 #pragma mark - tableDelegate
@@ -218,7 +221,6 @@
 {
     self.bottomView.allSelectBtn.selected = [self checkAllSelect];
     [self checkHaveSelect];
-    self.bottomView.payBtn.enabled = [self.payModel.payMoney floatValue] > 0;
     self.bottomView.moneyLabel.text = _StrFormate(@"￥%@",MoneyDeal(self.payModel.payMoney));
     [self.bottomView.payBtn setTitle:_StrFormate(@"结算(%ld)",self.payModel.buyNum) forState:UIControlStateNormal];
 }
@@ -234,7 +236,6 @@
 - (void)tableViewGoodsNumChange:(CarGoodsTableView *)tableView
 {
     [self checkHaveSelect];
-    self.bottomView.payBtn.enabled = [self.payModel.payMoney floatValue] > 0;
     self.bottomView.moneyLabel.text = _StrFormate(@"￥%@",MoneyDeal(self.payModel.payMoney));
     [self.bottomView.payBtn setTitle:_StrFormate(@"结算(%ld)",self.payModel.buyNum) forState:UIControlStateNormal];
 }
@@ -259,7 +260,6 @@
         _bottomView = [[CarGoodsBottomView alloc] init];
         [_bottomView.allSelectBtn addTarget:self action:@selector(allSelectBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView.payBtn addTarget:self action:@selector(payBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        _bottomView.payBtn.enabled = NO;
     }
     return _bottomView;
 }

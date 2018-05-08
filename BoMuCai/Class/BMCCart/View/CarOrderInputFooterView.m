@@ -17,6 +17,14 @@
         [self addSubview:self.titleLabel];
         [self addSubview:self.couponLabel];
         
+        UIImageView *arrow = [[UIImageView alloc] initWithImage:ImageWithName(@"RightArrow")];
+        [self addSubview:arrow];
+        
+        [arrow mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(self);
+            make.right.mas_equalTo(self).offset(-16);
+        }];
+        
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self);
             make.left.mas_equalTo(self).offset(16);
@@ -24,7 +32,7 @@
         
         [self.couponLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self);
-            make.right.mas_equalTo(self).offset(-16);
+            make.right.mas_equalTo(arrow.mas_left).offset(-16);
         }];
     }
     return self;
@@ -69,6 +77,7 @@
         _couponLabel.font = Font_sys_14;
         _couponLabel.textAlignment = NSTextAlignmentRight;
         _couponLabel.textColor = Color_Text_LightGray;
+        _couponLabel.text = @"未使用";
     }
     return _couponLabel;
 }
@@ -174,12 +183,19 @@
     NSString *fre = _StrFormate(@"%ld",(long)shopModel.totalYunFei);
     self.frePriceLabel.text = _StrFormate(@"￥%@",MoneyDeal(fre));
     self.countLabel.text = _StrFormate(@"共计%ld件宝贝",(long)shopModel.buyNum);
-    NSString *price = _StrFormate(@"%ld",(long)shopModel.totalPrice);
+    NSInteger prc = shopModel.totalPrice+shopModel.totalYunFei;
+    NSString *price = _StrFormate(@"%ld",(long)prc);
     self.totalPriceLabel.text = _StrFormate(@"￥%@",MoneyDeal(price));
     if (shopModel.couponModel)
     {
         self.couponView.couponLabel.text = shopModel.couponModel.name;
+        self.couponView.couponLabel.text = [NSString stringWithFormat:@"-¥ %@", MoneyDeal(shopModel.couponModel.denomination)];
+
         self.couponView.showCoupon = YES;
+        
+        NSInteger prc = shopModel.totalPrice+shopModel.totalYunFei-shopModel.couponModel.denomination.integerValue;
+        NSString *price = _StrFormate(@"%ld",(long)prc);
+        self.totalPriceLabel.text = _StrFormate(@"￥%@",MoneyDeal(price));
     }
     else
     {

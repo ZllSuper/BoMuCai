@@ -20,6 +20,8 @@
 
 - (void)goodsCellCountReduce:(CarGoodsCell *)cell;
 
+- (void)goodsCellCount:(CarGoodsCell *)cell;
+
 - (void)goodsCellTextFiledCountChange:(CarGoodsCell *)cell;
 
 @end

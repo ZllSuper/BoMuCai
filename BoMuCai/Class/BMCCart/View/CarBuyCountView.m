@@ -36,7 +36,8 @@
     [self addSubview:self.reduceBtn];
     [self addSubview:self.addBtn];
     [self addSubview:self.countTextFiled];
-    
+    [self addSubview:self.countTextBtn];
+
     UIView *lineView1 = [self lineView];
     UIView *lineView2 = [self lineView];
     [self addSubview:lineView1];
@@ -59,6 +60,10 @@
         make.left.mas_equalTo(lineView1.mas_right);
         make.size.mas_equalTo(self.reduceBtn);
         make.centerY.mas_equalTo(self.reduceBtn);
+    }];
+    
+    [self.countTextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.bottom.mas_equalTo(self.countTextFiled);
     }];
     
     [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -129,6 +134,15 @@
         _countTextFiled.keyboardType = UIKeyboardTypeNumberPad;
     }
     return _countTextFiled;
+}
+
+- (UIButton *)countTextBtn
+{
+    if (!_countTextBtn)
+    {
+        _countTextBtn = [[UIButton alloc] init];
+    }
+    return _countTextBtn;
 }
 
 - (UIToolbar *)accessoryView

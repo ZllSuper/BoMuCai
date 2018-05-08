@@ -17,6 +17,7 @@
     self.buyCountView.countTextFiled.delegate = self;
     [self.buyCountView.addBtn addTarget:self action:@selector(addBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.buyCountView.reduceBtn addTarget:self action:@selector(reduceBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.buyCountView.countTextBtn addTarget:self action:@selector(countBtnAction) forControlEvents:UIControlEventTouchUpInside];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -38,6 +39,11 @@
 - (void)reduceBtnAction
 {
     [self.delegate goodsCellCountReduce:self];
+}
+
+- (void)countBtnAction
+{
+    [self.delegate goodsCellCount:self];
 }
 
 - (IBAction)cellSelectBtnAction:(id)sender

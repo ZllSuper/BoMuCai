@@ -63,8 +63,13 @@
         }
     }
     
-    [self.delegate couponChooseViewController:self couponModel:selModel];
-    [self.navigationController popViewControllerAnimated:YES];
+    if (selModel) {
+        [self.delegate couponChooseViewController:self couponModel:selModel];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        ToastShowCenter(@"请选择优惠券");
+    }
 }
 
 #pragma mark - get

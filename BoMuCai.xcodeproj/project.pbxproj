@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650A8ED720A1442C009F9DFC /* CarCountCalculateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 650A8ED620A1442C009F9DFC /* CarCountCalculateView.m */; };
 		6522EBFC209FEB41001179A8 /* UIViewController+UMeng.m in Sources */ = {isa = PBXBuildFile; fileRef = 6522EBFB209FEB41001179A8 /* UIViewController+UMeng.m */; };
 		6522EC11209FF502001179A8 /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6522EC09209FF502001179A8 /* UMCommon.framework */; };
 		6522EC12209FF502001179A8 /* UMAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6522EC0C209FF502001179A8 /* UMAnalytics.framework */; };
@@ -629,6 +630,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		650A8ED520A1442C009F9DFC /* CarCountCalculateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarCountCalculateView.h; sourceTree = "<group>"; };
+		650A8ED620A1442C009F9DFC /* CarCountCalculateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarCountCalculateView.m; sourceTree = "<group>"; };
 		6522EBFA209FEB41001179A8 /* UIViewController+UMeng.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UMeng.h"; sourceTree = "<group>"; };
 		6522EBFB209FEB41001179A8 /* UIViewController+UMeng.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UMeng.m"; sourceTree = "<group>"; };
 		6522EC09209FF502001179A8 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
@@ -2930,6 +2933,8 @@
 				A6599A951E496BDA00CE793E /* CarCouponCell.xib */,
 				A6599A9B1E497C8F00CE793E /* CarCouponTableView.h */,
 				A6599A9C1E497C8F00CE793E /* CarCouponTableView.m */,
+				650A8ED520A1442C009F9DFC /* CarCountCalculateView.h */,
+				650A8ED620A1442C009F9DFC /* CarCountCalculateView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4313,6 +4318,7 @@
 				65C366A220119CE300B32E80 /* MWZoomingScrollView.m in Sources */,
 				A611031C1E2C6E6900055B5C /* SYPhotoBrowser.m in Sources */,
 				A611030A1E2C6E6900055B5C /* MLInputDodger.m in Sources */,
+				650A8ED720A1442C009F9DFC /* CarCountCalculateView.m in Sources */,
 				A66F35A31E2F4F7F0076DBE7 /* ScreenView.m in Sources */,
 				A66F35BE1E2F6F6C0076DBE7 /* SearchCollectionCell.m in Sources */,
 				A64258831E55541C00C496F4 /* LoginRequest.m in Sources */,
