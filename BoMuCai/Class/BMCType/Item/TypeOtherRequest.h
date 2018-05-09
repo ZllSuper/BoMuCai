@@ -10,6 +10,8 @@
 
 @interface TypeOtherRequest : BaseMainRequest
 
+@property (nonatomic, copy) NSString *shopId;
+
 @property (nonatomic, copy) NSString *type;
 
 @end

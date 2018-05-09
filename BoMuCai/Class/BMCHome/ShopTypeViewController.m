@@ -28,10 +28,11 @@
 
 @implementation ShopTypeViewController
 
-- (instancetype)initWithShopType:(ShopType)shopType andLevelModel:(BMCTypeModel *)model andShopChooseCallBack:(ShopTypeChooseCallBack)callBack
+- (instancetype)initWithShopType:(ShopType)shopType andLevelModel:(BMCTypeModel *)model andShopId:(NSString *)shopId andShopChooseCallBack:(ShopTypeChooseCallBack)callBack
 {
     if (self = [super init])
     {
+        self.shopId = shopId;
         _shopType = shopType;
         _chooseCallBack = callBack;
         if (shopType == ShopTypeLevelTwo)
@@ -97,6 +98,7 @@
 {
     __weak typeof(self) weakSelf = self;
     TypeLevelOneRequest *item = [[TypeLevelOneRequest alloc] init];
+    item.shopId = self.shopId;
     ProgressShow(self.view);
     [item requestWithSuccess:^( BXHBaseRequest *request) {
         ProgressHidden(weakSelf.view);
@@ -119,6 +121,7 @@
 {
     __weak typeof(self) weakSelf = self;
     TypeOtherRequest *item = [[TypeOtherRequest alloc] init];
+    item.shopId = self.shopId;
     item.type = self.weakModel.typeId;
     ProgressShow(self.view);
     [item requestWithSuccess:^( BXHBaseRequest *request) {
@@ -209,12 +212,12 @@
     }
     else if (self.shopType == ShopTypeLevelTwo)
     {
-        ShopTypeViewController *vc = [[ShopTypeViewController alloc] initWithShopType:ShopTypeLevelThree andLevelModel:self.sourceAry[indexPath.row] andShopChooseCallBack:self.chooseCallBack];
+        ShopTypeViewController *vc = [[ShopTypeViewController alloc] initWithShopType:ShopTypeLevelThree andLevelModel:self.sourceAry[indexPath.row] andShopId:self.shopId  andShopChooseCallBack:self.chooseCallBack];
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (self.shopType ==ShopTypeLevelOne)
     {
-        ShopTypeViewController *vc = [[ShopTypeViewController alloc] initWithShopType:ShopTypeLevelTwo andLevelModel:self.sourceAry[indexPath.row] andShopChooseCallBack:self.chooseCallBack];
+        ShopTypeViewController *vc = [[ShopTypeViewController alloc] initWithShopType:ShopTypeLevelTwo andLevelModel:self.sourceAry[indexPath.row] andShopId:self.shopId andShopChooseCallBack:self.chooseCallBack];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

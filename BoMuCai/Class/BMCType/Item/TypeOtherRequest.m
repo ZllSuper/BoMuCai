@@ -9,6 +9,12 @@
 #import "TypeOtherRequest.h"
 
 @implementation TypeOtherRequest
+
+- (NSDictionary *)bxhReplaceKeyFormPropertyNames
+{
+    return @{@"shopId" : @"id"};
+}
+
 - (void)serializeHTTPRequest
 {
     [super serializeHTTPRequest];

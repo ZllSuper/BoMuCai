@@ -23,7 +23,7 @@ typedef void(^ShopTypeChooseCallBack)(BMCTypeModel *model);
 
 @property (nonatomic, readonly, assign) ShopType shopType;
 
-- (instancetype)initWithShopType:(ShopType)shopType andLevelModel:(BMCTypeModel *)model andShopChooseCallBack:(ShopTypeChooseCallBack)callBack;
+- (instancetype)initWithShopType:(ShopType)shopType andLevelModel:(BMCTypeModel *)model andShopId:(NSString *)shopId andShopChooseCallBack:(ShopTypeChooseCallBack)callBack;
 
 - (instancetype)initWithShopType:(ShopType)shopType andShopId:(NSString *)shopId andShopChooseCallBack:(ShopTypeChooseCallBack)callBack;
 
