@@ -8,12 +8,16 @@
 
 #import "CarGoodsCell.h"
 
+NSNotificationName const CarGoodsCellEidtNotification = @"CarGoodsCellEidtNotification";
+NSNotificationName const CarGoodsCellDoneNotification = @"CarGoodsCellDoneNotification";
+
 @implementation CarGoodsCell
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
+    self.buyCountView.hidden = YES;
     self.buyCountView.countTextFiled.delegate = self;
     [self.buyCountView.addBtn addTarget:self action:@selector(addBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.buyCountView.reduceBtn addTarget:self action:@selector(reduceBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -22,6 +26,15 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 
     // Initialization code
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(carGoodsCellEidtNotification) name:CarGoodsCellEidtNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(carGoodsCellDoneNotification) name:CarGoodsCellDoneNotification object:nil];
+
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CarGoodsCellEidtNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CarGoodsCellDoneNotification object:nil];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -79,7 +92,20 @@
     self.statueLabel.hidden = [weakModel.stock integerValue] > 0;
     self.selectBtn.enabled = self.statueLabel.hidden;
     self.buyCountView.countTextFiled.text = weakModel.amount;
-    
+    self.buyCountLabel.text = weakModel.amount;
+}
+
+#pragma mark Notification
+- (void)carGoodsCellEidtNotification
+{
+    self.buyCountView.hidden = NO;
+    self.buyCountLabel.hidden = YES;
+}
+
+- (void)carGoodsCellDoneNotification
+{
+    self.buyCountView.hidden = YES;
+    self.buyCountLabel.hidden = NO;
 }
 
 @end

@@ -13,6 +13,7 @@
 
 #import "CarGoodsTableView.h"
 #import "CarGoodsBottomView.h"
+#import "CarGoodsCell.h"
 
 #import "CartPayModel.h"
 
@@ -34,6 +35,13 @@
 {
     [super viewDidLoad];
     self.title = @"购物车";
+    
+    UIButton *rightNarButton = [[UIButton alloc] init];
+    [rightNarButton setTitle:@"编辑" forState:UIControlStateNormal];
+    rightNarButton.titleLabel.font = Font_sys_14;
+    [rightNarButton setTitleColor:Color_MainText forState:UIControlStateNormal];
+    [rightNarButton addTarget:self action:@selector(rightNavAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightNarButton];
 
     self.emptyView = [BXHEmptyShowView creatWithSuperView:self.tableView andShowType:BXHEmptyImageAndTitleType];
     self.emptyView.imageView.image = ImageWithName(@"CarEmptyIcon");
@@ -196,6 +204,19 @@
 }
 
 #pragma mark - action
+- (void)rightNavAction:(UIButton *)button
+{
+    button.selected = !button.selected;
+    if (button.selected) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:CarGoodsCellEidtNotification object:nil];
+        [button setTitle:@"完成" forState:UIControlStateNormal];
+    }
+    else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:CarGoodsCellDoneNotification object:nil];
+        [button setTitle:@"编辑" forState:UIControlStateNormal];
+    }
+}
+
 - (void)allSelectBtnAction
 {
     self.bottomView.allSelectBtn.selected = !self.bottomView.allSelectBtn.selected;

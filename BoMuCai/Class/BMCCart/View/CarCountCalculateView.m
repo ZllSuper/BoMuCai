@@ -18,8 +18,16 @@
         [self creatSubViews];
         
         [self.countTextFiled becomeFirstResponder];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:nil];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+
 }
 
 - (void)creatSubViews
@@ -323,6 +331,13 @@
     view.carGoodModel = carGoodModel;
     view.countTextFiled.text = carGoodModel.amount;
     [window addSubview:view];
+}
+
+#pragma mark Notifications
+- (void)textFieldTextDidChangeNotification:(NSNotification *)noti
+{
+    NSString *number = [[NSString alloc] initWithFormat:@"%d", self.countTextFiled.text.intValue];
+    self.countTextFiled.text  = number;
 }
 
 @end

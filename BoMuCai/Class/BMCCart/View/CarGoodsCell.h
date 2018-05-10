@@ -10,6 +10,10 @@
 #import "CarBuyCountView.h"
 #import "CarGoodModel.h"
 
+FOUNDATION_EXTERN NSNotificationName const CarGoodsCellEidtNotification;
+FOUNDATION_EXTERN NSNotificationName const CarGoodsCellDoneNotification;
+
+
 @class CarGoodsCell;
 
 @protocol CarGoodsCellDelegate <NSObject>
@@ -39,6 +43,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 
 @property (weak, nonatomic) IBOutlet CarBuyCountView *buyCountView;
+
+@property (weak, nonatomic) IBOutlet UILabel *buyCountLabel;
 
 @property (weak, nonatomic) id <CarGoodsCellDelegate>delegate;
 
