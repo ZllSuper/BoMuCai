@@ -280,6 +280,11 @@
         [_tableView registerNib:[UINib nibWithNibName:[PersonCenterCell className] bundle:nil] forCellReuseIdentifier:[PersonCenterCell className]];
         
         _tableView.mj_header = [BXHRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+        
+        if (@available(iOS 11, *)) {
+            _tableView.estimatedRowHeight = 0;
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     return _tableView;
 }
