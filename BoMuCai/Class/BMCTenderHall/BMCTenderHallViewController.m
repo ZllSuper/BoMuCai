@@ -129,6 +129,7 @@
         _navView = [[TenderHallNavView alloc] init];
         [_navView.siftBtn addTarget:self action:@selector(siftBtnAction) forControlEvents:UIControlEventTouchUpInside];
         _navView.searchTextFiled.returnKeyType = UIReturnKeySearch;
+        _navView.searchTextFiled.clearButtonMode = UITextFieldViewModeWhileEditing;
         _navView.searchTextFiled.delegate = self;
     }
     return _navView;
