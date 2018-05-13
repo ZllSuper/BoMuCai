@@ -150,12 +150,12 @@
     if (num < 0)
     {
         self.textNumLabel.textColor = [UIColor redColor];
-        self.sureBtn.enabled = NO;
+//        self.sureBtn.enabled = NO;
     }
     else
     {
         self.textNumLabel.textColor = Color_Text_LightGray;
-        self.sureBtn.enabled = YES;
+//        self.sureBtn.enabled = YES;
     }
     self.textNumLabel.text = _StrFormate(@"余%ld",num);
 }
@@ -196,7 +196,7 @@
         _sureBtn.titleLabel.font = Font_sys_14;
         _sureBtn.layer.cornerRadius = 6;
         _sureBtn.layer.masksToBounds = YES;
-        _sureBtn.enabled = NO;
+//        _sureBtn.enabled = NO;
         [_sureBtn addTarget:self action:@selector(sureBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [_sureBtn setBackgroundImage:ImageWithColor(Color_Main_Dark) forState:UIControlStateNormal];
     }

@@ -32,4 +32,6 @@
 
 @property (nonatomic, weak) id <CarGoodsTableViewDelegate>selectDelegate;
 
+@property (nonatomic, assign) BOOL cellEdit;
+
 @end

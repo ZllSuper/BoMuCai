@@ -116,13 +116,12 @@
 {
     BXHWeakObj(self);
     BXHBlockObj(headerView);
-    BXHAlertViewController *alert = [BXHAlertViewController alertControllerWithTitle:@"删除订单" type:BXHAlertMessageType];
-    alert.message = @"是否删除这条订单？";
-    [alert addAction:[BXHAlertAction actionWithTitle:@"是" titleColor:Color_Main_Dark handler:^(BXHAlertAction *action) {
+    BXHAlertViewController *alert = [BXHAlertViewController alertControllerWithTitle:@"取消订单" type:BXHAlertMessageType];
+    alert.message = @"确定要取消该订单吗？";
+    [alert addAction:[BXHAlertAction actionWithTitle:@"确定" titleColor:Color_Main_Dark handler:^(BXHAlertAction *action) {
         [selfWeak cancelDelRequest:headerViewblock.orderModel];
-        
     }]];
-    [alert addAction:[BXHAlertAction actionWithTitle:@"否" titleColor:Color_Text_Gray handler:^(BXHAlertAction *action) {
+    [alert addAction:[BXHAlertAction actionWithTitle:@"取消" titleColor:Color_Text_Gray handler:^(BXHAlertAction *action) {
         
     }]];
     [self.navigationController presentViewController:alert animated:YES completion:nil];
@@ -130,9 +129,10 @@
 
 - (void)tableView:(UITableView *)tableView phoneCallBtnAction:(PCWaitPaySectionFooterView *)headerView
 {
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",headerView.orderModel.shopPhone]]];
+    NSLog(@"商家电话：%@", headerView.orderModel.shopPhone);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",headerView.orderModel.shopPhone]]];
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://18031883945"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://18031883945"]];
 }
 
 #pragma mark - get

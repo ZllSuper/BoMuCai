@@ -25,7 +25,6 @@ NSNotificationName const CarGoodsCellDoneNotification = @"CarGoodsCellDoneNotifi
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    // Initialization code
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(carGoodsCellEidtNotification) name:CarGoodsCellEidtNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(carGoodsCellDoneNotification) name:CarGoodsCellDoneNotification object:nil];
 

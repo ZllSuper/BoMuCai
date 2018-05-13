@@ -97,35 +97,39 @@
     [request requestWithSuccess:^( BXHBaseRequest *request) {
         
         NSString *url = @"";
-        NSDictionary *sourceDict = request.response.data[0];
-        if (DEF_SCREENHEIGHT == 480)
-        { //4，4S
-            url = sourceDict[@"imageF"];
-        }
-        else if (DEF_SCREENHEIGHT == 568)
-        { //5, 5C, 5S, iPod
-            url = sourceDict[@"imageE"];
-        }
-        else if (DEF_SCREENHEIGHT == 667)
-        { //6, 6S
-            url = sourceDict[@"imageC"];
-        }
-        else if (DEF_SCREENHEIGHT == 736)
-        { // 6Plus, 6SPlus
-            url = sourceDict[@"imageA"];
-        }
-        else {
-            url = sourceDict.allValues[0];
-        }
-        
-        if (url)
-        {
-            [EMSDWebImageManager.sharedManager downloadImageWithURL:[NSURL encodeURLWithString:url] options:0 progress:nil completed:^(UIImage *image, NSError *error, EMSDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                if (error == nil) {
-                    [[NSUserDefaults standardUserDefaults] setURL:imageURL forKey:ImageStartLoadUrl];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
+        if (request.response.data && [request.response.data isKindOfClass:[NSArray class]] && [request.response.data count] > 0) {
+            NSDictionary *sourceDict = request.response.data[0];
+            if (sourceDict) {
+                if (DEF_SCREENHEIGHT == 480)
+                { //4，4S
+                    url = sourceDict[@"imageF"];
                 }
-            }];
+                else if (DEF_SCREENHEIGHT == 568)
+                { //5, 5C, 5S, iPod
+                    url = sourceDict[@"imageE"];
+                }
+                else if (DEF_SCREENHEIGHT == 667)
+                { //6, 6S
+                    url = sourceDict[@"imageC"];
+                }
+                else if (DEF_SCREENHEIGHT == 736)
+                { // 6Plus, 6SPlus
+                    url = sourceDict[@"imageA"];
+                }
+                else {
+                    url = sourceDict.allValues[0];
+                }
+                
+                if (url)
+                {
+                    [EMSDWebImageManager.sharedManager downloadImageWithURL:[NSURL encodeURLWithString:url] options:0 progress:nil completed:^(UIImage *image, NSError *error, EMSDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                        if (error == nil) {
+                            [[NSUserDefaults standardUserDefaults] setURL:imageURL forKey:ImageStartLoadUrl];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
+                        }
+                    }];
+                }
+            }
         }
     } failure:^(NSError *error, BXHBaseRequest *request) {
         

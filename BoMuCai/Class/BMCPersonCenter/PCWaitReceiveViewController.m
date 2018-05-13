@@ -67,9 +67,10 @@
 
 - (void)tableView:(UITableView *)tableView phoneCallBtnAction:(PCWaitPaySectionFooterView *)headerView
 {
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",headerView.orderModel.shopPhone]]];
+    NSLog(@"商家电话：%@", headerView.orderModel.shopPhone);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",headerView.orderModel.shopPhone]]];
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://18031883945"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://18031883945"]];
 }
 
 - (void)tableView:(UITableView *)tableView backGoodsBtnAction:(PCWaitPaySectionFooterView *)headerView

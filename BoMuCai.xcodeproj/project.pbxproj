@@ -15,6 +15,8 @@
 		6558CBD71FE3FD8000FD5F02 /* PCKConfirmRevRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6558CBD61FE3FD8000FD5F02 /* PCKConfirmRevRequest.m */; };
 		6598BE741FE36B3400111640 /* SheetPresentStyleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6598BE721FE36B3300111640 /* SheetPresentStyleView.m */; };
 		6598BE771FE36C0F00111640 /* BMShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6598BE761FE36C0F00111640 /* BMShareView.m */; };
+		65AA09A920A868EA00BE1F30 /* WaresCommentNoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA09A720A868E900BE1F30 /* WaresCommentNoneCell.m */; };
+		65AA09AA20A868EA00BE1F30 /* WaresCommentNoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65AA09A820A868E900BE1F30 /* WaresCommentNoneCell.xib */; };
 		65B0D47B204FC2B1004FDD81 /* PCWaitRefundOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B0D47A204FC2B1004FDD81 /* PCWaitRefundOrderDetailViewController.m */; };
 		65B0D47E204FD501004FDD81 /* PCCanceledOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B0D47D204FD501004FDD81 /* PCCanceledOrderDetailViewController.m */; };
 		65C3667120119CE300B32E80 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C3655120119CE200B32E80 /* UIViewController+HUD.m */; };
@@ -643,6 +645,9 @@
 		6598BE731FE36B3400111640 /* SheetPresentStyleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SheetPresentStyleView.h; sourceTree = "<group>"; };
 		6598BE751FE36C0F00111640 /* BMShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMShareView.h; sourceTree = "<group>"; };
 		6598BE761FE36C0F00111640 /* BMShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMShareView.m; sourceTree = "<group>"; };
+		65AA09A620A868E900BE1F30 /* WaresCommentNoneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaresCommentNoneCell.h; sourceTree = "<group>"; };
+		65AA09A720A868E900BE1F30 /* WaresCommentNoneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaresCommentNoneCell.m; sourceTree = "<group>"; };
+		65AA09A820A868E900BE1F30 /* WaresCommentNoneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaresCommentNoneCell.xib; sourceTree = "<group>"; };
 		65B0D479204FC2B1004FDD81 /* PCWaitRefundOrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCWaitRefundOrderDetailViewController.h; sourceTree = "<group>"; };
 		65B0D47A204FC2B1004FDD81 /* PCWaitRefundOrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCWaitRefundOrderDetailViewController.m; sourceTree = "<group>"; };
 		65B0D47C204FD501004FDD81 /* PCCanceledOrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCCanceledOrderDetailViewController.h; sourceTree = "<group>"; };
@@ -3763,6 +3768,9 @@
 				A61318DF1E3642AF00893A09 /* WaresCommentCell.m */,
 				A61318E01E3642AF00893A09 /* WaresCommentCell.xib */,
 				A61318E31E36454400893A09 /* WaresCommentFooterView.h */,
+				65AA09A620A868E900BE1F30 /* WaresCommentNoneCell.h */,
+				65AA09A720A868E900BE1F30 /* WaresCommentNoneCell.m */,
+				65AA09A820A868E900BE1F30 /* WaresCommentNoneCell.xib */,
 				A61318E41E36454400893A09 /* WaresCommentFooterView.m */,
 				A6173B531E37349D0024E7E8 /* WaresCommendSectionHeader.h */,
 				A6173B541E37349D0024E7E8 /* WaresCommendSectionHeader.m */,
@@ -3948,6 +3956,7 @@
 				A611031F1E2C6E6900055B5C /* MMVideoPreviewPlayHL@2x.png in Resources */,
 				A61103231E2C6E6900055B5C /* photo_number_icon@2x.png in Resources */,
 				A6173B641E3798EA0024E7E8 /* bg_rl_satisfaction.png in Resources */,
+				65AA09AA20A868EA00BE1F30 /* WaresCommentNoneCell.xib in Resources */,
 				A61DA61C1E4859A700E614A9 /* PersonCenterList.plist in Resources */,
 				A61103211E2C6E6900055B5C /* photo_def_photoPickerVc@2x.png in Resources */,
 				65F8B28F1FEB9643000A86C9 /* AlipaySDK.bundle in Resources */,
@@ -4471,6 +4480,7 @@
 				A642586C1E55460700C496F4 /* VerifyCodeRequest.m in Sources */,
 				A634ACCE1E56D48900757F8D /* ActivityDetailTimeRequest.m in Sources */,
 				A670EBE11E31FD08003D2ABD /* ShopNavBar.m in Sources */,
+				65AA09A920A868EA00BE1F30 /* WaresCommentNoneCell.m in Sources */,
 				65C3667620119CE300B32E80 /* FixFopen.c in Sources */,
 				A66F35C21E2F6F6C0076DBE7 /* SearchShopTableView.m in Sources */,
 				A61103051E2C6E6900055B5C /* UIScrollView+MJExtension.m in Sources */,

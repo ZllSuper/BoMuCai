@@ -7,6 +7,7 @@
 //
 
 #import "WaresDetailTableView.h"
+#import "WaresCommentNoneCell.h"
 
 @interface WaresDetailTableView ()
 
@@ -121,15 +122,15 @@
         return YES;
     }
     else if (actionType == SectionCommentActionType) {
-        if (self.detailModel.assessDto.count>0) {
+//        if (self.detailModel.assessDto.count>0) {
             self.actionType = actionType;
             [self reloadData];
             return YES;
-        }
-        else {
-            ToastShowCenter(@"暂无评价");
-            return NO;
-        }
+//        }
+//        else {
+//            ToastShowCenter(@"暂无评价");
+//            return NO;
+//        }
     }
     
     return YES;
@@ -172,7 +173,12 @@
             }
             else
             {
-                return self.detailModel.assessDto.count;
+                if (self.detailModel.assessDto.count > 0) {
+                    return self.detailModel.assessDto.count;
+                }
+                else {
+                    return 1;
+                }
             }
         }
             break;
@@ -294,8 +300,13 @@
             }
             else
             {
-                BMCWaresCommentModel *model = self.detailModel.assessDto[indexPath.row];
-                return [WaresCommentCell showHeight:model.introduce];
+                if (self.detailModel.assessDto.count>0) {
+                    BMCWaresCommentModel *model = self.detailModel.assessDto[indexPath.row];
+                    return [WaresCommentCell showHeight:model.introduce];
+                }
+                else {
+                    return 40;
+                }
             }
         }
             break;
@@ -417,9 +428,15 @@
             }
             else
             {
-                WaresCommentCell *cell = [WaresCommentCell ct_cellWithTableViewFromXIB:tableView indentifier:[WaresCommentCell className]];
-                cell.weakModel = self.detailModel.assessDto[indexPath.row];
-                return cell;
+                if (self.detailModel.assessDto.count>0) {
+                    WaresCommentCell *cell = [WaresCommentCell ct_cellWithTableViewFromXIB:tableView indentifier:[WaresCommentCell className]];
+                    cell.weakModel = self.detailModel.assessDto[indexPath.row];
+                    return cell;
+                }
+                else {
+                    WaresCommentNoneCell *cell = [WaresCommentNoneCell ct_cellWithTableViewFromXIB:tableView indentifier:[WaresCommentCell className]];
+                    return cell;
+                }
             }
         }
             break;
@@ -456,7 +473,7 @@
 {
 //    if([UIDevice currentDevice].systemVersion.floatValue>=10)
 //    {
-//        [self.webCell.webView setNeedsLayout];
+        [self.webCell.webView setNeedsLayout];
 //    }
 }
 

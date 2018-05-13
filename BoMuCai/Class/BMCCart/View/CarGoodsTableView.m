@@ -19,8 +19,17 @@
         
         [self registerNib:[UINib nibWithNibName:[CarGoodsCell className] bundle:nil] forCellReuseIdentifier:[CarGoodsCell className]];
         [self registerClass:[CarSectionHeaderView class] forHeaderFooterViewReuseIdentifier:[CarSectionHeaderView className]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(carGoodsCellEidtNotification) name:CarGoodsCellEidtNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(carGoodsCellDoneNotification) name:CarGoodsCellDoneNotification object:nil];
     }
     return  self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CarGoodsCellEidtNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CarGoodsCellDoneNotification object:nil];
 }
 
 - (void)requestViewSource:(BOOL)refresh
@@ -228,7 +237,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    return self.cellEdit;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -245,12 +254,16 @@
 }
 
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+#pragma mark Notifications
+#pragma mark Notification
+- (void)carGoodsCellEidtNotification
+{
+    self.cellEdit = YES;
 }
-*/
+
+- (void)carGoodsCellDoneNotification
+{
+    self.cellEdit = NO;
+}
 
 @end

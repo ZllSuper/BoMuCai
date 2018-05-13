@@ -183,12 +183,12 @@
     {
         BXHWeakObj(self);
         //删除订单
-        BXHAlertViewController *alert = [BXHAlertViewController alertControllerWithTitle:@"删除订单" type:BXHAlertMessageType];
-        alert.message = @"是否删除这条订单？";
-        [alert addAction:[BXHAlertAction actionWithTitle:@"是" titleColor:Color_Main_Dark handler:^(BXHAlertAction *action) {
+        BXHAlertViewController *alert = [BXHAlertViewController alertControllerWithTitle:@"取消订单" type:BXHAlertMessageType];
+        alert.message = @"确定要取消该订单吗？";
+        [alert addAction:[BXHAlertAction actionWithTitle:@"确定" titleColor:Color_Main_Dark handler:^(BXHAlertAction *action) {
             [selfWeak cancelDelRequest];
         }]];
-        [alert addAction:[BXHAlertAction actionWithTitle:@"否" titleColor:Color_Text_Gray handler:^(BXHAlertAction *action) {
+        [alert addAction:[BXHAlertAction actionWithTitle:@"取消" titleColor:Color_Text_Gray handler:^(BXHAlertAction *action) {
             
         }]];
         [self.navigationController presentViewController:alert animated:YES completion:nil];

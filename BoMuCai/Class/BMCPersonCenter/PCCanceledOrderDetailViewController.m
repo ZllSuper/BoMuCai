@@ -116,7 +116,7 @@
             //            }
             
             
-            weakSelf.timeNumCell.oneLabel.text = [NSString stringWithFormat:@"订单编号：%@",@""];
+            weakSelf.timeNumCell.oneLabel.text = [NSString stringWithFormat:@"退款编号：%@",weakSelf.detailModel.oid];
             //            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[weakSelf.detailModel.updateDate longLongValue] / 1000];
             weakSelf.timeNumCell.secLabel.text = [NSString stringWithFormat:@"申请时间：%@",@""];
             //            date = [NSDate dateWithTimeIntervalSince1970:[weakSelf.detailModel.endDate longLongValue] / 1000];

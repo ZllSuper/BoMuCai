@@ -8,7 +8,6 @@
 
 #import "PCWaitSendOrderDetailViewController.h"
 #import "BXHAlertViewController.h"
-#import "PCApplyRefundViewController.h"
 #import "BMCShopViewController.h"
 
 #import "PCOrderDetailStatueCell.h"
@@ -22,8 +21,9 @@
 #import "PCOrderDetailRequest.h"
 #import "PCOrderDetailModel.h"
 #import "PCRemindSendRequest.h"
+#import "PCCancelDelOrderRequest.h"
 
-@interface PCWaitSendOrderDetailViewController () <UITableViewDelegate, UITableViewDataSource,CarSectionHeaderViewDelegate,PCOrderDetailBtnBottomViewDelegate,PCApplyRefundResultViewControllerDelegate>
+@interface PCWaitSendOrderDetailViewController () <UITableViewDelegate, UITableViewDataSource,CarSectionHeaderViewDelegate,PCOrderDetailBtnBottomViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -147,22 +147,44 @@
     }];
 }
 
+- (void)cancelDelRequest
+{
+    __weak typeof(self) weakSelf = self;
+    PCCancelDelOrderRequest *request = [[PCCancelDelOrderRequest alloc] init];
+    request.orderId = self.orderId;
+    request.userId = KAccountInfo.userId;
+    request.remark = @"";
+    ProgressShow(self.view);
+    [request requestWithSuccess:^( BXHBaseRequest *request) {
+        ProgressHidden(weakSelf.view);
+        if ([request.response.code isEqualToString:@"0000"])
+        {
+            [weakSelf.protcol waitSendDetailControllerDelOrder:weakSelf];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            ToastShowBottom(request.response.message);
+        }
+    } failure:^(NSError *error, BXHBaseRequest *request) {
+        ProgressHidden(weakSelf.view);
+        ToastShowBottom(NetWorkErrorTip);
+    }];
+}
 
 #pragma mark - bottomViewDelegate
 - (void)bottomView:(PCOrderDetailBtnBottomView *)bottomView btnActionAtIndex:(NSInteger)index
 {
     if(index == 0)
     {
-        __weak typeof(self) weakSelf = self;
+        BXHWeakObj(self);
         //删除订单
-        BXHAlertViewController *alert = [BXHAlertViewController alertControllerWithTitle:@"退款" type:BXHAlertMessageType];
-        alert.message = @"是否对当前订单退款？";
-        [alert addAction:[BXHAlertAction actionWithTitle:@"是" titleColor:Color_Main_Dark handler:^(BXHAlertAction *action) {
-            PCApplyRefundViewController *vc = [[PCApplyRefundViewController alloc] initWithOrderId:weakSelf.orderId];
-            vc.delegate = weakSelf;
-            [weakSelf.navigationController pushViewController:vc animated:YES];
+        BXHAlertViewController *alert = [BXHAlertViewController alertControllerWithTitle:@"取消订单" type:BXHAlertMessageType];
+        alert.message = @"确定要取消该订单吗？";
+        [alert addAction:[BXHAlertAction actionWithTitle:@"确定" titleColor:Color_Main_Dark handler:^(BXHAlertAction *action) {
+            [selfWeak cancelDelRequest];
         }]];
-        [alert addAction:[BXHAlertAction actionWithTitle:@"否" titleColor:Color_Text_Gray handler:^(BXHAlertAction *action) {
+        [alert addAction:[BXHAlertAction actionWithTitle:@"取消" titleColor:Color_Text_Gray handler:^(BXHAlertAction *action) {
             
         }]];
         [self.navigationController presentViewController:alert animated:YES completion:nil];
