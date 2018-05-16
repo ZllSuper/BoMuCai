@@ -11,7 +11,7 @@
 @interface WaresDetailWebCell()
 
 
-@property (nonatomic, strong) UIScrollView *scrollView;
+//@property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
 
@@ -27,36 +27,51 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-
-        [self.contentView addSubview:self.scrollView];
-        [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        [self.contentView addSubview:self.webView];
+        [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self.contentView);
         }];
-        
-        [self.scrollView addSubview:self.webView];
-        [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.and.left.mas_equalTo(self.scrollView);
-            make.size.mas_equalTo(self.scrollView);
-        }];
-//        [self.webView addObserver:self forKeyPath:@"scrollView.contentSize" options:NSKeyValueObservingOptionNew context:nil];
-        
-//        if ([[UIDevice currentDevice].systemVersion floatValue] > 9.0)
-//        {
-//            NSSet *types = [NSSet setWithArray:@[WKWebsiteDataTypeDiskCache,WKWebsiteDataTypeMemoryCache]];
-//            [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:types modifiedSince:[NSDate date] completionHandler:^{
-//                NSLog(@"clear");
-//            }];
-//        }
-//        else
-//        {
-//            NSString *libPath = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
-//            NSString *cookiesFolderPath = [libPath stringByAppendingString:@"/Cookies"];
-//            [[NSFileManager defaultManager] removeItemAtPath:cookiesFolderPath error:nil];
-//        }
-        
     }
     return self;
 }
+
+
+//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+//{
+//    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
+//    {
+//        self.selectionStyle = UITableViewCellSelectionStyleNone;
+//
+//        [self.contentView addSubview:self.scrollView];
+//        [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.edges.mas_equalTo(self.contentView);
+//        }];
+//
+//        [self.scrollView addSubview:self.webView];
+//        [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.and.left.mas_equalTo(self.scrollView);
+//            make.size.mas_equalTo(self.scrollView);
+//        }];
+////        [self.webView addObserver:self forKeyPath:@"scrollView.contentSize" options:NSKeyValueObservingOptionNew context:nil];
+//
+////        if ([[UIDevice currentDevice].systemVersion floatValue] > 9.0)
+////        {
+////            NSSet *types = [NSSet setWithArray:@[WKWebsiteDataTypeDiskCache,WKWebsiteDataTypeMemoryCache]];
+////            [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:types modifiedSince:[NSDate date] completionHandler:^{
+////                NSLog(@"clear");
+////            }];
+////        }
+////        else
+////        {
+////            NSString *libPath = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
+////            NSString *cookiesFolderPath = [libPath stringByAppendingString:@"/Cookies"];
+////            [[NSFileManager defaultManager] removeItemAtPath:cookiesFolderPath error:nil];
+////        }
+//
+//    }
+//    return self;
+//}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -139,13 +154,13 @@
     return _webView;
 }
 
-- (UIScrollView *)scrollView
-{
-    if (!_scrollView)
-    {
-        _scrollView = [[UIScrollView alloc] init];
-    }
-    return _scrollView;
-}
+//- (UIScrollView *)scrollView
+//{
+//    if (!_scrollView)
+//    {
+//        _scrollView = [[UIScrollView alloc] init];
+//    }
+//    return _scrollView;
+//}
 
 @end

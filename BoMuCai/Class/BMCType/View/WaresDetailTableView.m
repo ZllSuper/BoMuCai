@@ -468,13 +468,12 @@
 }
 
 
-- (void)scrollViewDidEndDragging:(UIScrollView*)scrollView willDecelerate:(BOOL)decelerate;
-
+- (void)scrollViewDidEndDragging:(UIScrollView*)scrollView willDecelerate:(BOOL)decelerate
 {
-//    if([UIDevice currentDevice].systemVersion.floatValue>=10)
-//    {
+    if([UIDevice currentDevice].systemVersion.floatValue>=10)
+    {
         [self.webCell.webView setNeedsLayout];
-//    }
+    }
 }
 
 #pragma mark -cellDelegate
@@ -564,13 +563,5 @@
     }
     return _commendHeaderView;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

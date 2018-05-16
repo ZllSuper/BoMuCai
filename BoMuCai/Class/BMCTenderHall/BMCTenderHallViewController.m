@@ -113,6 +113,13 @@
 }
 
 #pragma mark - textFiledDelegate
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    self.tableView.sortModel.nameLike = @"";
+    [self.tableView.mj_header beginRefreshing];
+    return YES;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];

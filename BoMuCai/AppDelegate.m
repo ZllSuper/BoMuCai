@@ -167,9 +167,7 @@
 
 - (void)bxhLaunchViewControllerWillDismiss:(BXHLaunchViewController *)vc
 {
-    
     [self baiduSourceInit];
-
     [self.window makeKeyAndVisible];
     
     BMCHomeViewController *homeVc = [[BMCHomeViewController alloc] init];
