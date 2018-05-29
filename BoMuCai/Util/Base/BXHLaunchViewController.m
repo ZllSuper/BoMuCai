@@ -127,10 +127,12 @@
         _launchImageView = [[UIImageView alloc] init];
 
     
-        NSURL *imageUrl = [[NSUserDefaults standardUserDefaults] URLForKey:ImageStartLoadUrl];
+//        NSURL *imageUrl = [[NSUserDefaults standardUserDefaults] URLForKey:ImageStartLoadUrl];
+        NSString *imageUrl = [[NSUserDefaults standardUserDefaults] objectForKey:ImageStartLoadUrl];
+
         if (imageUrl)
         {
-            [_launchImageView sd_setImageWithURL:imageUrl];
+            [_launchImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
         }
         else
         {

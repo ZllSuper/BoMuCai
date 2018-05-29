@@ -124,7 +124,8 @@
                 {
                     [EMSDWebImageManager.sharedManager downloadImageWithURL:[NSURL encodeURLWithString:url] options:0 progress:nil completed:^(UIImage *image, NSError *error, EMSDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                         if (error == nil) {
-                            [[NSUserDefaults standardUserDefaults] setURL:imageURL forKey:ImageStartLoadUrl];
+//                            [[NSUserDefaults standardUserDefaults] setURL:imageURL forKey:ImageStartLoadUrl];
+                            [[NSUserDefaults standardUserDefaults] setObject:url forKey:ImageStartLoadUrl];
                             [[NSUserDefaults standardUserDefaults] synchronize];
                         }
                     }];

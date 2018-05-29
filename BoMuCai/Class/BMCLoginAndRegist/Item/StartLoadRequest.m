@@ -14,8 +14,8 @@
 {
     if (self = [super init])
     {
-        self.cachePolicy = BXHRequestReturnCacheDataElseReloadRemoteData;
-        self.cacheTime = 60 * 60 * 24;
+//        self.cachePolicy = BXHRequestReturnCacheDataElseReloadRemoteData;
+//        self.cacheTime = 60 * 60 * 24;
     }
     return self;
 }
